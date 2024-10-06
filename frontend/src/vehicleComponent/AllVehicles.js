@@ -27,7 +27,7 @@ const AllVehicles = () => {
     }, []);
 
     const toggleStatus = async (id, currentStatus) => {
-        const newStatus = currentStatus === 'available' ? 'not available' : 'available';
+        const newStatus = currentStatus === 'Available' ? 'Not available' : 'Available';
         try {
             await axios.put(`http://localhost:8020/vehicle/${id}/status`, { status: newStatus });
             setVehicles((prevVehicles) =>
@@ -78,20 +78,7 @@ const AllVehicles = () => {
 
     const generateReport = () => {
         const doc = new jsPDF();
-        
-        // Add logo text
-        doc.setFontSize(25); // Set a large font size for the logo text
-        doc.setFont('helvetica', 'bold'); // Set the font style to bold
-        doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
-    
-        // Add subtitle below the main text (Address)
-        doc.setFontSize(10); // Set smaller font size for the subtitle
-        doc.setFont('helvetica', 'normal'); // Set font style back to normal
-        doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'center' }); // Centered at (x: 105, y: 35)
-    
-        // Move the starting point of the table down to make room for the logo and subtitle
-        const tableStartY = 40; // Start the table below the logo and subtitle
-    
+        doc.text('All Vehicles Report', 14, 16);
         const tableColumn = ['Vehicle No', 'Model', 'Registered Year', 'Chassis No', 'Capacity', 'Status'];
         const tableRows = vehicles.map(vehicle => [
             vehicle.vehicleNo,
@@ -101,11 +88,9 @@ const AllVehicles = () => {
             vehicle.capacity,
             vehicle.status,
         ]);
-    
-        doc.autoTable(tableColumn, tableRows, { startY: tableStartY });
+        doc.autoTable(tableColumn, tableRows, { startY: 20 });
         doc.save('vehicles_report.pdf');
     };
-    
 
     if (loading) {
         return <p className="text-center">Loading vehicles...</p>;
@@ -178,7 +163,7 @@ const AllVehicles = () => {
                                             <button
                                                 onClick={() => toggleStatus(vehicle._id, vehicle.status)}
                                                 className={`text-white font-bold py-1 px-2 rounded ${
-                                                    vehicle.status === 'available' ? 'bg-green-500' : 'bg-red-500'
+                                                    vehicle.status === 'Available' ? 'bg-green-500' : 'bg-red-500'
                                                 }`}
                                             >
                                                 {vehicle.status}

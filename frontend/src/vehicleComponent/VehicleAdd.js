@@ -20,6 +20,50 @@ const VehicleAdd = () => {
         setFile(e.target.files[0]);
     };
 
+    const handleVehicleNoChange = (e) => {
+        const value = e.target.value;
+        if (value.length >= 5 && value.length <= 15) {
+            setVehicleNo(value);
+        } else if (value.length < 5) {
+            setVehicleNo(value);
+        }
+    };
+
+    const handleChassisNoChange = (e) => {
+        const value = e.target.value;
+        if (value.length >= 5 && value.length <= 20) {
+            setChassisNo(value);
+        } else if (value.length < 5) {
+            setChassisNo(value);
+        }
+    };
+
+    const handleCapacityChange = (e) => {
+        const value = e.target.value;
+        if (value === '' || (value >= 1 && value <= 100)) {
+            setCapacity(value);
+        }
+    };
+
+    const handleRegisteredYearChange = (e) => {
+        setRegisteredYear(e.target.value);
+    };
+
+    const validateRegisteredYear = () => {
+        if (registeredYear < 1920) {
+            setRegisteredYear(1920);
+        } else if (registeredYear > 2024) {
+            setRegisteredYear(2024);
+        }
+    };
+
+    const handleModelChange = (e) => {
+        const value = e.target.value;
+        if (value.length <= 20) {
+            setModel(value); // Update the model only if length is less than or equal to 20
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
@@ -63,7 +107,7 @@ const VehicleAdd = () => {
                             type="text"
                             id="vehicleNo"
                             value={vehicleNo}
-                            onChange={(e) => setVehicleNo(e.target.value)}
+                            onChange={handleVehicleNoChange}
                             placeholder="Enter Vehicle No"
                             required
                             className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:ring focus:ring-blue-500"
@@ -91,8 +135,11 @@ const VehicleAdd = () => {
                             type="number"
                             id="registeredYear"
                             value={registeredYear}
-                            onChange={(e) => setRegisteredYear(e.target.value)}
-                            placeholder="Enter Registered Year"
+                            onChange={handleRegisteredYearChange}
+                            onBlur={validateRegisteredYear} // Validate on blur
+                            placeholder="Enter Registered Year (e.g., 2020)"
+                            min="1920"
+                            max="2024"
                             required
                             className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
@@ -106,7 +153,7 @@ const VehicleAdd = () => {
                             type="text"
                             id="model"
                             value={model}
-                            onChange={(e) => setModel(e.target.value)}
+                            onChange={handleModelChange} // Updated here
                             placeholder="Enter Vehicle Model"
                             required
                             className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -121,8 +168,10 @@ const VehicleAdd = () => {
                             type="text"
                             id="chassisNo"
                             value={chassisNo}
-                            onChange={(e) => setChassisNo(e.target.value)}
+                            onChange={handleChassisNoChange}
                             placeholder="Enter Chassis No"
+                            min="99999"
+                            max="99999999999999999999"
                             required
                             className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
@@ -136,8 +185,10 @@ const VehicleAdd = () => {
                             type="number"
                             id="capacity"
                             value={capacity}
-                            onChange={(e) => setCapacity(e.target.value)}
-                            placeholder="Enter Capacity"
+                            onChange={handleCapacityChange}
+                            placeholder="Enter Capacity (1-100)"
+                            min="1"
+                            max="100"
                             required
                             className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         />
@@ -153,8 +204,8 @@ const VehicleAdd = () => {
                             onChange={(e) => setStatus(e.target.value)}
                             className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         >
-                            <option value="available">Available</option>
-                            <option value="not available">Not Available</option>
+                            <option value="Available">Available</option>
+                            <option value="Not available">Not Available</option>
                         </select>
                     </div>
 
