@@ -219,35 +219,36 @@ const EmployeeAddPage = () => {
                         )}
                     </div>
                     <div className="mb-4">
-                        <label htmlFor="nic" className="block text-sm font-medium text-gray-700">NIC</label>
-                        <input
-                            type="text"
-                            id="nic"
-                            value={nic}
-                            onChange={(e) => {
-                                const inputValue = e.target.value;
+    <label htmlFor="nic" className="block text-sm font-medium text-gray-700">NIC</label>
+    <input
+        type="text"
+        id="nic"
+        value={nic}
+        maxLength={12} // Set max length to 12 characters
+        onChange={(e) => {
+            const inputValue = e.target.value;
 
-                                // Validate NIC input for digits and length
-                                if (/^\d*$/.test(inputValue) && inputValue.length <= 12) {
-                                    setNic(inputValue);
-                                    validateNic(inputValue);
-                                } else {
-                                    // Show error if input contains letters or is too long
-                                    if (inputValue.length > 0) {
-                                        setNicError('NIC must be numeric and contain only digits.');
-                                    } else {
-                                        setNicError('');
-                                    }
-                                }
-                            }}
-                            required
-                            className={`mt-1 block w-full border h-10 rounded-md shadow-sm ${nicError ? 'border-red-500' : 'border-gray-300'
-                                } focus:ring focus:ring-blue-500 focus:border-blue-500`}
-                        />
-                        {nicError && (
-                            <p className="text-red-500 text-sm mt-1">{nicError}</p>
-                        )}
-                    </div>
+            // Validate NIC input for digits and length
+            if (/^\d*$/.test(inputValue) && inputValue.length <= 12) {
+                setNic(inputValue);
+                validateNic(inputValue);
+            } else {
+                // Show error if input contains letters or is too long
+                if (inputValue.length > 0) {
+                    setNicError('NIC must be numeric and contain only digits.');
+                } else {
+                    setNicError('');
+                }
+            }
+        }}
+        required
+        className={`mt-1 block w-full border h-10 rounded-md shadow-sm ${nicError ? 'border-red-500' : 'border-gray-300'} focus:ring focus:ring-blue-500 focus:border-blue-500`}
+    />
+    {nicError && (
+        <p className="text-red-500 text-sm mt-1">{nicError}</p>
+    )}
+</div>
+
                     <div className="mb-4">
                         <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email</label>
                         <input

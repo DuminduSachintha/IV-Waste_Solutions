@@ -88,6 +88,10 @@ const AllVehicles = () => {
         doc.setFontSize(10); // Set smaller font size for the subtitle
         doc.setFont('helvetica', 'normal'); // Set font style back to normal
         doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'center' }); // Centered at (x: 105, y: 35)
+
+         // Add the report title
+         doc.setFontSize(20);
+         doc.text('Daily Collections Report', 14, 50); // Adjusted y position for the report title
     
         // Move the starting point of the table down to make room for the logo and subtitle
         const tableStartY = 40; // Start the table below the logo and subtitle
