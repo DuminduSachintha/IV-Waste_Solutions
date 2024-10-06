@@ -51,16 +51,7 @@ const ViewPickUp = () => {
   const generatePDF = () => {
     const doc = new jsPDF();
   
-    // Add logo text
-    doc.setFontSize(25); // Set a large font size for the logo text
-    doc.setFont('helvetica', 'bold'); // Set the font style to bold
-    doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
-  
-    // Add subtitle below the main text (Address)
-    doc.setFontSize(10); // Set smaller font size for the subtitle
-    doc.setFont('helvetica', 'normal'); // Set font style back to normal
-    doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'center' }); // Centered at (x: 105, y: 35)
-  
+    
     // Add a line break before the main table
     doc.text('', 10, 45); // Adds an empty line (adjust as necessary)
   
@@ -115,7 +106,7 @@ const ViewPickUp = () => {
     </div>
       <div className='flex flex-col items-center mt-10 w-4/5'>
       <div className='w-6/7'>
-      <h2 className="text-3xl font-bold mb-6 text-[#166d13] text-center">Pick-Up Requests</h2>
+      <h2 className="text-3xl font-bold mb-6 text-[#9e972f] text-center">Pick-Up Requests</h2>
 
       {/* Search and Filter Section */}
       <div className="mb-6 flex justify-between items-center">
@@ -142,7 +133,7 @@ const ViewPickUp = () => {
 
         <button
           onClick={generatePDF}
-          className="p-2 bg-[#41A64F] text-white font-bold rounded-lg hover:bg-[#f6f1e5] hover:text-[#41A64F] transition duration-300"
+          className="p-2 bg-[#9e972f] text-white font-bold rounded-lg hover:bg-[#f6f1e5] hover:text-[#9e972f] transition duration-300"
         >
           Generate PDF
         </button>

@@ -252,16 +252,15 @@ const AddPickUp = () => {
       </div>
 
       <div className='flex justify-center items-center w-full'>
-        <div className="max-w-4xl w-4/5 p-6 bg-[#ffffff] rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold mb-4 text-black text-center">Add New Pick-up Request</h2>
-          <br></br><br></br>
+        <div className="max-w-4xl w-4/5 p-6 bg-[#c5c078] rounded-lg shadow-md">
+          <h2 className="text-2xl font-bold mb-4 text-white text-center">Add New Pick-up Request</h2>
           
           {errors.general && <div className="mb-4 text-red-600">{errors.general}</div>}
           {success && <div className="mb-4 text-green-600">{success}</div>}
 
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="mb-4">
-              <label className="block text-sm font-medium text-black">Category:</label>
+              <label className="block text-sm font-medium text-white">Category:</label>
               <select 
                 name="category" 
                 value={formData.category} 
@@ -280,7 +279,7 @@ const AddPickUp = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-black">Quantity:</label>
+              <label className="block text-sm font-medium text-white">Quantity:</label>
               <input
                 type="number"
                 name="quantity"
@@ -295,7 +294,7 @@ const AddPickUp = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-black">Date:</label>
+              <label className="block text-sm font-medium text-white">Date:</label>
               <input
                 type="date"
                 name="date"
@@ -310,7 +309,7 @@ const AddPickUp = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-black">Time:</label>
+              <label className="block text-sm font-medium text-white">Time:</label>
               <input
                 type="time"
                 name="time"
@@ -323,7 +322,7 @@ const AddPickUp = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-black">Description (optional):</label>
+              <label className="block text-sm font-medium text-white">Description (optional):</label>
               <textarea
                 name="description"
                 value={formData.description}
@@ -334,7 +333,7 @@ const AddPickUp = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-black">Location:</label>
+              <label className="block text-sm font-medium text-white">Location:</label>
               <input
                 type="text"
                 name="location"
@@ -347,7 +346,7 @@ const AddPickUp = () => {
             </div>
 
             <div className="mb-4">
-              <label className="block text-sm font-medium text-black">Address:</label>
+              <label className="block text-sm font-medium text-white">Address:</label>
               <input
                 type="text"
                 name="address"
@@ -362,7 +361,7 @@ const AddPickUp = () => {
 
             <button
               type="submit"
-              className="col-span-1 md:col-span-2 mt-4 w-full bg-gradient-to-r from-green-500 to-green-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-green-600 hover:to-green-800 transition duration-300"
+              className="col-span-1 md:col-span-2 mt-4 w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-yellow-600 hover:to-yellow-800 transition duration-300"
             >
               Submit
             </button>
