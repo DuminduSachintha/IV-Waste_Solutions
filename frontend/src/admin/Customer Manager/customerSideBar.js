@@ -15,7 +15,7 @@ const Sidebar = () => {
     
       const isLoggedIn = Cookies.get('userId');
   return (
-    <div className="bg-[#E2E8CE] w-64 min-h-screen p-6 shadow-lg">
+    <div className="bg-[#b3e6bf] w-64 min-h-screen p-6 shadow-lg">
       
       <ul className="space-y-4">
       <li>

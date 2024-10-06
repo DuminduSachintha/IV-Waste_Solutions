@@ -15,6 +15,7 @@ const PaymentPage = () => {
   const [expDate, setExpDate] = useState("");
   const [nameOnCard, setNameOnCard] = useState("");
   const [message, setMessage] = useState("");
+  const [paymentSuccess, setPaymentSuccess] = useState(false); // New state for payment success
 
   // Get userId from cookies
   const userId = Cookies.get("userId");
@@ -92,17 +93,8 @@ const PaymentPage = () => {
       });
 
       if (response.ok) {
-        const data = await response.json();
         setMessage("Payment successful!");
-
-        // Reset form after success
-        setCreditCardNumber("");
-        setCvv("");
-        setExpDate("");
-        setNameOnCard("");
-
-        // Navigate to the stock view page
-        navigate("/stockview");
+        setPaymentSuccess(true); // Set payment success to true
       } else {
         setMessage("Payment failed. Please try again.");
       }
@@ -118,96 +110,112 @@ const PaymentPage = () => {
         Payment
       </h2>
       {itemName ? (
-        <div className="flex max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
-          {/* Left Side: Item Details */}
-          <div className="w-1/2 p-6 border-r border-gray-300">
-            <h3 className="text-2xl mb-4">Item: {itemName}</h3>
-            <p className="text-lg mb-2">Price: ${itemPrice.toFixed(2)}</p>
-            <p className="text-lg mb-4">Item ID: {itemId}</p>
-          </div>
+        !paymentSuccess ? (
+          <div className="flex max-w-4xl mx-auto bg-white rounded-lg shadow-lg">
+            {/* Left Side: Item Details */}
+            <div className="w-1/2 p-6 border-r border-gray-300">
+              <h3 className="text-2xl mb-4">Item: {itemName}</h3>
+              <p className="text-lg mb-2">Price: ${itemPrice.toFixed(2)}</p>
+              <p className="text-lg mb-4">Item ID: {itemId}</p>
+            </div>
 
-          {/* Right Side: Payment Form */}
-          <div className="w-1/2 p-6">
-            <form onSubmit={handlePayment}>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 mb-2"
-                  htmlFor="creditCardNumber"
-                >
-                  Credit Card Number
-                </label>
-                <input
-                  type="text"
-                  id="creditCardNumber"
-                  value={creditCardNumber}
-                  onChange={handleCreditCardChange}
-                  className={`border p-2 w-full rounded ${
-                    creditCardError ? "border-red-500" : "border-gray-300"
-                  }`}
-                  required
-                />
-                {creditCardError && (
-                  <p className="text-red-500 mt-2">{creditCardError}</p>
-                )}
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2" htmlFor="cvv">
-                  CVV
-                </label>
-                <input
-                  type="text"
-                  id="cvv"
-                  value={cvv}
-                  onChange={handleCvvChange}
-                  className={`border p-2 w-full rounded ${
-                    cvvError ? "border-red-500" : "border-gray-300"
-                  }`}
-                  required
-                />
-                {cvvError && <p className="text-red-500 mt-2">{cvvError}</p>}
-              </div>
-              <div className="mb-4">
-                <label className="block text-gray-700 mb-2" htmlFor="expDate">
-                  Expiration Date (MM/YYYY)
-                </label>
-                <input
-                  type="date"
-                  id="expDate"
-                  value={expDate}
-                  onChange={(e) => setExpDate(e.target.value)}
-                  className="border border-gray-300 p-2 w-full rounded"
-                  min={getTomorrowDate()} // Set the minimum selectable date to tomorrow
-                  required
-                />
-              </div>
-              <div className="mb-4">
-                <label
-                  className="block text-gray-700 mb-2"
-                  htmlFor="nameOnCard"
-                >
-                  Name on Card
-                </label>
-                <input
-                  type="text"
-                  id="nameOnCard"
-                  value={nameOnCard}
-                  onChange={(e) => setNameOnCard(e.target.value)}
-                  className="border border-gray-300 p-2 w-full rounded"
-                  required
-                />
-              </div>
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
-                >
-                  Pay
-                </button>
-              </div>
-            </form>
-            {message && <p className="text-center mt-4">{message}</p>}
+            {/* Right Side: Payment Form */}
+            <div className="w-1/2 p-6">
+              <form onSubmit={handlePayment}>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 mb-2"
+                    htmlFor="creditCardNumber"
+                  >
+                    Credit Card Number
+                  </label>
+                  <input
+                    type="text"
+                    id="creditCardNumber"
+                    value={creditCardNumber}
+                    onChange={handleCreditCardChange}
+                    className={`border p-2 w-full rounded ${
+                      creditCardError ? "border-red-500" : "border-gray-300"
+                    }`}
+                    required
+                  />
+                  {creditCardError && (
+                    <p className="text-red-500 mt-2">{creditCardError}</p>
+                  )}
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700 mb-2" htmlFor="cvv">
+                    CVV
+                  </label>
+                  <input
+                    type="text"
+                    id="cvv"
+                    value={cvv}
+                    onChange={handleCvvChange}
+                    className={`border p-2 w-full rounded ${
+                      cvvError ? "border-red-500" : "border-gray-300"
+                    }`}
+                    required
+                  />
+                  {cvvError && <p className="text-red-500 mt-2">{cvvError}</p>}
+                </div>
+                <div className="mb-4">
+                  <label className="block text-gray-700 mb-2" htmlFor="expDate">
+                    Expiration Date (MM/YYYY)
+                  </label>
+                  <input
+                    type="date"
+                    id="expDate"
+                    value={expDate}
+                    onChange={(e) => setExpDate(e.target.value)}
+                    className="border border-gray-300 p-2 w-full rounded"
+                    min={getTomorrowDate()} // Set the minimum selectable date to tomorrow
+                    required
+                  />
+                </div>
+                <div className="mb-4">
+                  <label
+                    className="block text-gray-700 mb-2"
+                    htmlFor="nameOnCard"
+                  >
+                    Name on Card
+                  </label>
+                  <input
+                    type="text"
+                    id="nameOnCard"
+                    value={nameOnCard}
+                    onChange={(e) => setNameOnCard(e.target.value)}
+                    className="border border-gray-300 p-2 w-full rounded"
+                    required
+                  />
+                </div>
+                <div className="flex justify-center">
+                  <button
+                    type="submit"
+                    className="bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
+                  >
+                    Pay
+                  </button>
+                </div>
+              </form>
+              {message && <p className="text-center mt-4">{message}</p>}
+            </div>
           </div>
-        </div>
+        ) : (
+          // Render payment success details
+          <div className="flex flex-col items-center">
+            <h3 className="text-2xl mb-4 text-green-600">Payment Successful!</h3>
+            <p className="text-lg mb-2">Item: {itemName}</p>
+            <p className="text-lg mb-2">Price: ${itemPrice.toFixed(2)}</p>
+            <p className="text-lg mb-2">Card ending in: {creditCardNumber.slice(-4)}</p>
+            <button
+              onClick={() => navigate("/stockview")}
+              className="mt-6 bg-gradient-to-r from-green-400 to-green-600 text-white py-2 px-4 rounded-lg"
+            >
+              Go to Stock View
+            </button>
+          </div>
+        )
       ) : (
         <p>No item details available.</p>
       )}

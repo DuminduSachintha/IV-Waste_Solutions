@@ -39,7 +39,7 @@ const StockView = () => {
 
     return (
         <div className="flex flex-col items-center p-8 bg-[#F6F1E5] min-h-screen">
-            <h2 className="text-5xl font-extrabold mb-8 text-[#cfa226] shadow-md">Stock View</h2>
+            <h2 className="text-5xl font-extrabold mb-8 text-[#1d9a32] shadow-md">Stock View</h2>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {stockItems.map(item => (

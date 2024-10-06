@@ -54,7 +54,7 @@ const ItemDetail = () => {
         <div className="flex justify-center items-center p-8 bg-[#F6F1E5] min-h-screen">
             <div className="bg-white rounded-lg shadow-lg overflow-hidden max-w-lg w-full">
                 <div className="p-8">
-                    <h2 className="text-4xl font-bold text-center text-[#cfa226] mb-6">
+                    <h2 className="text-4xl font-bold text-center text-[#1d9a32] mb-6">
                         {item.name}
                     </h2>
                     <img 
@@ -71,12 +71,12 @@ const ItemDetail = () => {
                     </div>
                     <div className="flex justify-between items-center text-lg font-semibold mb-6">
                         <span className="text-gray-800">Price:</span>
-                        <span className="text-[#cfa226]">${item.price.toFixed(2)}</span>
+                        <span className="text-[#1d9a32]">${item.price.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-center">
                         <button 
                             onClick={handleBuyNow} // Call the handler on click
-                            className="bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
+                            className="bg-gradient-to-r from-[#1d9a32] to-[#1d9a32] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
                         >
                             Buy Now
                         </button>

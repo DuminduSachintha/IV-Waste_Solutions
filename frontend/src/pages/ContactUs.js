@@ -85,6 +85,7 @@ const ContactUs = () => {
         <h2 className="text-4xl font-semibold text-center text-gray-900 mb-6">
           Contact Us
         </h2>
+        <br></br>
 
         {error && (
           <div className="bg-red-100 text-red-700 p-3 mb-4 rounded-md border border-red-300">
@@ -125,15 +126,10 @@ const ContactUs = () => {
                         </p>
                     </div>
                  <br></br>
-          <br></br>
-          <p className="lock text-gray-700 flex items-center text-lg">
-            <strong>Do you have any Issues with pur services ?</strong>
-          </p>
-          <br></br>
-
+          
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">
-              Issue
+            Do you have any Issues with pur services ?
             </label>
             <input
               type="text"

@@ -181,7 +181,7 @@ const CustomerRegister = () => {
             <input
               type="text"
               name="name"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               value={customer.name}
               onChange={handleChange}
               required
@@ -198,7 +198,7 @@ const CustomerRegister = () => {
             <input
               type="email"
               name="email"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               value={customer.email}
               onChange={handleChange}
               required
@@ -215,7 +215,7 @@ const CustomerRegister = () => {
             <input
               type="text"
               name="address"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               value={customer.address}
               onChange={handleChange}
               required
@@ -232,7 +232,7 @@ const CustomerRegister = () => {
             <input
               type="text"
               name="contactNumber"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               value={customer.contactNumber}
               onChange={handleChange}
               required
@@ -251,7 +251,7 @@ const CustomerRegister = () => {
             <input
               type="password"
               name="password"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               value={customer.password}
               onChange={handleChange}
               required
@@ -263,7 +263,7 @@ const CustomerRegister = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-yellow-600 hover:to-yellow-800 transition duration-300"
+            className="w-full bg-gradient-to-r from-green-500 to-green-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-green-600 hover:to-green-800 transition duration-300"
           >
             Register
           </button>

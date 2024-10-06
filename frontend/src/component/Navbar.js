@@ -52,7 +52,7 @@ const Navbar = () => {
                   Residential Waste Extraction
                 </Link>
                 <Link
-                  to="/buy-recycled-material"
+                  to="/stockview"
                   className="block px-4 py-2 text-gray-700 hover:bg-green-500 hover:text-white"
                   onClick={() => setDropdownOpen(false)}
                 >
