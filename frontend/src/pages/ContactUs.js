@@ -126,20 +126,33 @@ const ContactUs = () => {
                     </div>
                  <br></br>
           <br></br>
+<<<<<<< HEAD
           <p className="lock text-red-700 flex items-center text-lg">
             <strong>nsnnjnnjenfnifernenenfenieiejiferfijierfif</strong>
+=======
+          <p className="lock text-gray-700 flex items-center text-lg">
+            <strong>Do you have any Issues with pur services ?</strong>
+>>>>>>> 322cc1a4e112df1d655b1c95ef5a404c8f8b0aee
           </p>
           <br></br>
 
           <div className="mb-4">
+<<<<<<< HEAD
             <label className="block text-red-700 font-medium mb-2">
+=======
+            <label className="block text-gray-700 font-medium mb-2">
+>>>>>>> 322cc1a4e112df1d655b1c95ef5a404c8f8b0aee
               Issue
             </label>
             <input
               type="text"
               value={title}
               onChange={handleTitleChange}
+<<<<<<< HEAD
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm"
+=======
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+>>>>>>> 322cc1a4e112df1d655b1c95ef5a404c8f8b0aee
               placeholder="Enter your title"
             />
             {titleError && (
@@ -154,7 +167,11 @@ const ContactUs = () => {
             <textarea
               value={description}
               onChange={handleDescriptionChange} // Validate and filter description on change
+<<<<<<< HEAD
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
+=======
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+>>>>>>> 322cc1a4e112df1d655b1c95ef5a404c8f8b0aee
               rows="3"
               placeholder="Enter your message"
             />
@@ -165,7 +182,11 @@ const ContactUs = () => {
 
           <button
             type="submit"
+<<<<<<< HEAD
             className="w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-green-600 hover:to-yellow-800 transition duration-300"
+=======
+            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-yellow-600 hover:to-yellow-800 transition duration-300"
+>>>>>>> 322cc1a4e112df1d655b1c95ef5a404c8f8b0aee
           >
             Submit
           </button>
