@@ -20,6 +20,7 @@ const UpdateVehicle = () => {
         image: null,
     });
     const [imagePreview, setImagePreview] = useState('');
+    const [yearError, setYearError] = useState('');
 
     useEffect(() => {
         const fetchVehicle = async () => {
@@ -49,7 +50,17 @@ const UpdateVehicle = () => {
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
-        if (name === 'image') {
+        
+        if (name === 'registeredYear') {
+            // Check if the registered year is within the allowed range
+            const year = parseInt(value, 10);
+            if (year < 1907 || year > 2025) {
+                setYearError('Registered year must be between 1907 and 2024.');
+            } else {
+                setYearError('');
+                setFormData({ ...formData, [name]: value });
+            }
+        } else if (name === 'image') {
             setFormData({ ...formData, image: files[0] });
             setImagePreview(URL.createObjectURL(files[0]));
         } else {
@@ -59,6 +70,11 @@ const UpdateVehicle = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (yearError) {
+            return; // Do not submit if there is a year validation error
+        }
+
         const formDataToSend = new FormData();
         for (const key in formData) {
             formDataToSend.append(key, formData[key]);
@@ -104,6 +120,7 @@ const UpdateVehicle = () => {
                                 name="vehicleNo"
                                 value={formData.vehicleNo}
                                 onChange={handleChange}
+                                maxLength="20"  // Added maxLength attribute
                                 required
                                 className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-indigo-200"
                             />
@@ -118,6 +135,7 @@ const UpdateVehicle = () => {
                                 required
                                 className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-indigo-200"
                             />
+                            {yearError && <p className="text-red-500">{yearError}</p>}
                         </div>
                         <div className="mb-4">
                             <label className="block text-gray-700 font-semibold">Model:</label>
@@ -126,6 +144,7 @@ const UpdateVehicle = () => {
                                 name="model"
                                 value={formData.model}
                                 onChange={handleChange}
+                                maxLength="20"  // Added maxLength attribute
                                 required
                                 className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-indigo-200"
                             />
@@ -137,6 +156,7 @@ const UpdateVehicle = () => {
                                 name="chassisNo"
                                 value={formData.chassisNo}
                                 onChange={handleChange}
+                                maxLength="20"  // Added maxLength attribute
                                 required
                                 className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-indigo-200"
                             />
@@ -148,6 +168,10 @@ const UpdateVehicle = () => {
                                 name="capacity"
                                 value={formData.capacity}
                                 onChange={handleChange}
+                                placeholder="Enter Capacity (1-100)"
+                                min="1"
+                                max="100"
+                                maxLength="2"  // Added maxLength attribute
                                 required
                                 className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-indigo-200"
                             />
@@ -162,8 +186,8 @@ const UpdateVehicle = () => {
                                 className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring focus:ring-indigo-200"
                             >
                                 <option value="">Select Status</option>
-                                <option value="active">Active</option>
-                                <option value="inactive">Inactive</option>
+                                <option value="Available">Available</option>
+                                <option value="Not Available">Not Available</option>
                             </select>
                         </div>
                         <div className="mb-4 md:col-span-2">

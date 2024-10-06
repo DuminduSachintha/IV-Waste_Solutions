@@ -93,7 +93,7 @@ const ContactUs = () => {
         )}
 
         {successMessage && (
-          <div className="bg-green-100 text-red-700 p-3 mb-4 rounded-md border border-green-300">
+          <div className="bg-green-100 text-green-700 p-3 mb-4 rounded-md border border-green-300">
             {successMessage}
           </div>
         )}
@@ -103,43 +103,43 @@ const ContactUs = () => {
                     {/* Contact Information */}
                     <div className="mb-6">
                         {/* Phone with WhatsApp Icon */}
-                        <p className=" lock text-red-700 flex items-center ">
+                        <p className=" lock text-gray-700 flex items-center ">
                             <FaPhoneAlt className="mr-2 text-black" /> {/* Phone Icon */}
                             <strong>071-3795259</strong>
                         </p><br/>
-                        <p className="lock text-red-700 flex items-center ">
+                        <p className="lock text-gray-700 flex items-center ">
                          <FaWhatsapp className="mr-2 text-black" /> {/* WhatsApp Icon */}
                        <strong>071-3767543</strong>
                            </p>
                         <br />
-                        <p className="lock text-red-700 flex items-center ">
+                        <p className="lock text-gray-700 flex items-center ">
                          <FaEnvelope className="mr-2 text-black" /> {/* WhatsApp Icon */}
                        <strong>ivwastes@gmail.com</strong>
                            </p>
                         <br />
                         
                         {/* Address with Location Icon */}
-                        <p className="lock text-red-700 flex items-center ">
+                        <p className="lock text-gray-700 flex items-center ">
                             <FaMapMarkerAlt className="mr-2 text-red-600" /> {/* Location Icon */}
                             <strong>IV- Waste Solutions, Welivita road, Kaduwela</strong>
                         </p>
                     </div>
                  <br></br>
           <br></br>
-          <p className="lock text-red-700 flex items-center text-lg">
-            <strong>nsnnjnnjenfnifernenenfenieiejiferfijierfif</strong>
+          <p className="lock text-gray-700 flex items-center text-lg">
+            <strong>Do you have any Issues with pur services ?</strong>
           </p>
           <br></br>
 
           <div className="mb-4">
-            <label className="block text-red-700 font-medium mb-2">
+            <label className="block text-gray-700 font-medium mb-2">
               Issue
             </label>
             <input
               type="text"
               value={title}
               onChange={handleTitleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
               placeholder="Enter your title"
             />
             {titleError && (
@@ -154,7 +154,7 @@ const ContactUs = () => {
             <textarea
               value={description}
               onChange={handleDescriptionChange} // Validate and filter description on change
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
               rows="3"
               placeholder="Enter your message"
             />
@@ -165,7 +165,7 @@ const ContactUs = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-green-600 hover:to-yellow-800 transition duration-300"
+            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-yellow-600 hover:to-yellow-800 transition duration-300"
           >
             Submit
           </button>
