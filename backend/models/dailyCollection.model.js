@@ -19,12 +19,6 @@ const dailyCollectionSchema = new mongoose.Schema({
   nic: {
     type: String,
     required: true,
-    validate: {
-      validator: function (nic) {
-        return /^(\d{11}V|\d{12})$/.test(nic); // NIC validation (11 digits + 'V' or 12 digits)
-      },
-      message: 'NIC must be either 11 digits followed by "V" or 12 digits.',
-    },
   },
   address: {
     type: String,

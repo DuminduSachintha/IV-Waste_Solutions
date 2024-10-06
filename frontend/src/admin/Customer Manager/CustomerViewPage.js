@@ -45,7 +45,22 @@ const CustomerViewPage = () => {
 
     const generateReport = () => {
         const doc = new jsPDF();
-        doc.text('Customer Report', 14, 16);
+
+        // Add logo text at the top of the PDF
+        doc.setFontSize(25); // Set a large font size for the logo text
+        doc.setFont('helvetica', 'bold'); // Set the font style to bold
+        doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
+        
+        // Add the subtitle below the main text (Address)
+        doc.setFontSize(10); // Set smaller font size for the subtitle
+        doc.setFont('helvetica', 'normal'); // Set font style back to normal
+        doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'center' }); // Centered at (x: 105, y: 35)
+
+        // Add report title
+        doc.setFontSize(14);
+        doc.text('Customer Report', 14, 50); // Set position lower for the title
+
+        // Set up the table
         doc.autoTable({
             head: [['Customer ID', 'Name', 'Email', 'Contact Number', 'Address']],
             body: customers.map(customer => [
@@ -55,7 +70,9 @@ const CustomerViewPage = () => {
                 customer.contactNumber,
                 customer.address
             ]),
+            startY: 60, // Start the table below the title
         });
+
         doc.save('customer_report.pdf'); 
     };
 

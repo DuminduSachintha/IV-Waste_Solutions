@@ -7,6 +7,7 @@ const AddSalary = () => {
     const [selectedEmployeeId, setSelectedEmployeeId] = useState('');
     const [basicSalary, setBasicSalary] = useState('');
     const [error, setError] = useState('');
+    const [salaryError, setSalaryError] = useState(''); // State for salary error
     const [successMessage, setSuccessMessage] = useState('');
 
     // Fetch employees when the component mounts
@@ -23,10 +24,37 @@ const AddSalary = () => {
         fetchEmployees();
     }, []);
 
+    // Handle salary input with validation
+    const handleSalaryChange = (e) => {
+        const value = e.target.value;
+
+        // Check if value contains only numbers
+        const isNumeric = /^[0-9]*$/.test(value);
+
+        if (!isNumeric) {
+            setSalaryError('Only numbers are allowed, no letters or special characters');
+            return;
+        }
+
+        // Check if the value is within the valid range
+        if (value === '' || (value >= 0 && value <= 200000)) {
+            setBasicSalary(value);
+            setSalaryError(''); // Clear error if valid
+        } else {
+            setSalaryError('Salary must be between 0 and 200,000'); // Show range error
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(''); // Reset error message
         setSuccessMessage(''); // Reset success message
+
+        // Prevent form submission if there is a validation error
+        if (salaryError) {
+            setError('Please fix the errors before submitting.');
+            return;
+        }
 
         try {
             const newSalary = { employeeId: selectedEmployeeId, basicSalary };
@@ -76,18 +104,22 @@ const AddSalary = () => {
                             Basic Salary
                         </label>
                         <input
-                            type="number"
+                            type="text"
                             id="basicSalary"
                             value={basicSalary}
-                            onChange={(e) => setBasicSalary(e.target.value)}
-                            className="mt-1 block w-full border h-10 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
+                            onChange={handleSalaryChange}
+                            className={`mt-1 block w-full border h-10 border-gray-300 rounded-md shadow-sm focus:ring ${
+                                salaryError ? 'border-red-500 focus:border-red-500' : 'focus:ring-blue-500 focus:border-blue-500'
+                            }`}
                             required
                         />
+                        {salaryError && <p className="text-red-500 text-sm mt-1">{salaryError}</p>}
                     </div>
                     <div className="col-span-2 flex justify-center">
                         <button
                             type="submit"
                             className="mt-4 w-2/4 bg-[#1d8b1d] text-white font-bold py-2 px-4 rounded-md hover:bg-[#1d8b1d]"
+                            disabled={!!salaryError} // Disable submit if there's a validation error
                         >
                             Add Salary
                         </button>

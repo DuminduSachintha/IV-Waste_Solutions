@@ -60,14 +60,25 @@ const ShowDailyCollections = () => {
 
     const generateReport = () => {
         const doc = new jsPDF();
-
+    
+        // Add the title
+        doc.setFontSize(25);
+        doc.setFont('helvetica', 'bold');
+        doc.text('IV-Waste Solutions', 105, 30, { align: 'center' });
+    
+        // Add the subtitle (Address)
+        doc.setFontSize(10); // Set smaller font size for the subtitle
+        doc.setFont('helvetica', 'normal'); // Set font style back to normal
+        doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'center' }); // Centered at (x: 105, y: 35)
+    
+        // Add the report title
         doc.setFontSize(20);
-        doc.text('Daily Collections Report', 14, 22);
-        
+        doc.text('Daily Collections Report', 14, 50); // Adjusted y position for the report title
+    
         doc.setFontSize(12);
         const tableColumn = ["Category", "Name", "NIC", "Address", "Email", "Contact Number", "Location", "Status"];
         const tableRows = [];
-
+    
         filteredCollections.forEach(collection => {
             const collectionData = [
                 collection.category,
@@ -81,10 +92,15 @@ const ShowDailyCollections = () => {
             ];
             tableRows.push(collectionData);
         });
-
-        doc.autoTable(tableColumn, tableRows, { startY: 30 });
+    
+        // Set the starting position for the table
+        const startY = 60; // Adjust this as necessary based on the previous text
+        doc.autoTable(tableColumn, tableRows, { startY });
+        
+        // Save the PDF
         doc.save('daily_collections_report.pdf');
     };
+    
 
     return (
         <div className="flex min-h-screen">

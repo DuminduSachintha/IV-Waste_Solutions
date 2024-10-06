@@ -16,6 +16,9 @@ const UpdateTask = () => {
     });
     const [employees, setEmployees] = useState([]); // State to store employees
     const [error, setError] = useState('');
+    const [titleError, setTitleError] = useState('');
+    const [descriptionError, setDescriptionError] = useState('');
+    const [dateError, setDateError] = useState('');
 
     useEffect(() => {
         const fetchTask = async () => {
@@ -47,8 +50,52 @@ const UpdateTask = () => {
         setTask({ ...task, [name]: value });
     };
 
+    const specialCharPattern = /^[a-zA-Z0-9 ]*$/; // Regex pattern to allow only alphanumeric characters and spaces
+    
+    const handleTitleChange = (e) => {
+        const value = e.target.value;
+        if (!specialCharPattern.test(value)) {
+            setTitleError('Special characters are not allowed in the title');
+        } else {
+            setTitleError('');
+        }
+        setTask({ ...task, title: value.replace(/[^a-zA-Z0-9 ]/g, '') }); // Update task state
+    };
+
+    const handleDescriptionChange = (e) => {
+        const value = e.target.value;
+        if (!specialCharPattern.test(value)) {
+            setDescriptionError('Special characters are not allowed in the description');
+        } else {
+            setDescriptionError('');
+        }
+        setTask({ ...task, description: value.replace(/[^a-zA-Z0-9 ]/g, '') }); // Update task state
+    };
+
+    // Get today's date
+    const today = new Date();
+    // Set minimum date as tomorrow
+    const minDate = new Date(today);
+    minDate.setDate(today.getDate() + 1);
+
+    // Set maximum date as 60 days from today
+    const maxDate = new Date(today);
+    maxDate.setDate(today.getDate() + 60);
+
+    // Format the date to YYYY-MM-DD for use in input's min and max attributes
+    const formatDate = (date) => {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (titleError || descriptionError || dateError) {
+            setError('Please fix the errors before submitting');
+            return;
+        }
         try {
             await axios.put(`http://localhost:8020/task/${id}`, task);
             navigate('/viewtask'); // Redirect to the task list after update
@@ -76,10 +123,11 @@ const UpdateTask = () => {
                             type="text"
                             name="title"
                             value={task.title}
-                            onChange={handleChange}
+                            onChange={handleTitleChange}
                             className="mt-1 block w-full border h-10 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
                             required
                         />
+                        {titleError && <p className="text-red-500 text-sm">{titleError}</p>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700" htmlFor="description">
@@ -88,10 +136,11 @@ const UpdateTask = () => {
                         <textarea
                             name="description"
                             value={task.description}
-                            onChange={handleChange}
+                            onChange={handleDescriptionChange}
                             className="mt-1 block w-full border h-20 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
                             required
                         />
+                        {descriptionError && <p className="text-red-500 text-sm">{descriptionError}</p>}
                     </div>
                     <div className="mb-4">
                         <label className="block text-sm font-medium text-gray-700" htmlFor="assignedEmployeeId">
@@ -156,10 +205,13 @@ const UpdateTask = () => {
                             type="date"
                             name="dueDate"
                             value={task.dueDate ? task.dueDate.slice(0, 10) : ''}
-                            onChange={handleChange}
+                            onChange={(e) => setTask({ ...task, dueDate: e.target.value })}
+                            min={formatDate(minDate)} // Set minimum date as tomorrow
+                            max={formatDate(maxDate)} 
                             className="mt-1 block w-full border h-10 border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
                             required
                         />
+                        {dateError && <p className="text-red-500 text-sm">{dateError}</p>}
                     </div>
                     <div className="col-span-2 flex justify-center">
                         <button

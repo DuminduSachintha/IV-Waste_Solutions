@@ -50,9 +50,23 @@ const ViewPickUp = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
-    doc.text('Pick-Up Requests', 14, 20);
+  
+    // Add logo text
+    doc.setFontSize(25); // Set a large font size for the logo text
+    doc.setFont('helvetica', 'bold'); // Set the font style to bold
+    doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
+  
+    // Add subtitle below the main text (Address)
+    doc.setFontSize(10); // Set smaller font size for the subtitle
+    doc.setFont('helvetica', 'normal'); // Set font style back to normal
+    doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'center' }); // Centered at (x: 105, y: 35)
+  
+    // Add a line break before the main table
+    doc.text('', 10, 45); // Adds an empty line (adjust as necessary)
+  
+    // Table headers and data
     doc.autoTable({
-      startY: 30,
+      startY: 50, // Start the table below the logo text
       head: [['Category', 'Quantity', 'Date', 'Time', 'Location', 'Address']],
       body: filteredPickups.map(pickup => [
         pickup.category,
@@ -63,8 +77,10 @@ const ViewPickUp = () => {
         pickup.address,
       ]),
     });
+  
     doc.save('pickup_requests.pdf');
   };
+  
 
   return (
     <div className="w-full h-screen mx-auto bg-[#F6F1E5] rounded-lg shadow-md flex justify-center">

@@ -9,6 +9,7 @@ const FeedbackPage = () => {
     const [starRating, setStarRating] = useState(1); // Default star rating
     const [isEditing, setIsEditing] = useState(false); // Check if we are in "edit mode"
     const [feedbackId, setFeedbackId] = useState(null); // Store feedback ID if editing
+    const [errorMessage, setErrorMessage] = useState(''); // Store validation error message
     const customerId = Cookies.get('userId'); // Get customer ID from cookies
 
     // Fetch feedback if it exists for the given pickupId
@@ -33,9 +34,27 @@ const FeedbackPage = () => {
         fetchFeedback();
     }, [id]);
 
+    // Function to handle real-time validation of the description input
+    const handleDescriptionChange = (e) => {
+        const input = e.target.value;
+        const regex = /^[a-zA-Z0-9\s]*$/;
+
+        if (regex.test(input)) {
+            setDescription(input); 
+            setErrorMessage('');
+        } else {
+            setErrorMessage('Special characters are not allowed.');
+        }
+    };
+
     // Handle form submission (either create or update feedback)
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (description.trim() === '') {
+            setErrorMessage('Description cannot be empty.');
+            return;
+        }
 
         // Prepare feedback data
         const feedbackData = {
@@ -91,7 +110,7 @@ const FeedbackPage = () => {
                         type="text"
                         id="customerId"
                         value={customerId}
-                        readOnly // Make it read-only since it's derived from cookies
+                        readOnly
                         className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
                     />
                 </div>
@@ -103,11 +122,12 @@ const FeedbackPage = () => {
                     <textarea
                         id="description"
                         value={description}
-                        onChange={(e) => setDescription(e.target.value)}
+                        onChange={handleDescriptionChange}
                         rows="4"
                         required
-                        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500"
+                        className={`mt-1 block w-full border border-gray-300 rounded-md shadow-sm focus:ring focus:ring-blue-500 focus:border-blue-500 ${errorMessage ? 'border-red-500' : ''}`}
                     />
+                    {errorMessage && <p className="text-red-500 text-sm mt-1">{errorMessage}</p>}
                 </div>
 
                 <div className="mb-4">

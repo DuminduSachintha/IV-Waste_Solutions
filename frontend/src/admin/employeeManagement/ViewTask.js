@@ -38,20 +38,41 @@ const ViewTask = () => {
     // Generate a PDF report for the tasks
     const handleGenerateReport = () => {
         const doc = new jsPDF();
-        doc.text('Tasks Report', 14, 16);
+    
+        // Add "IV-Waste Solutions" styled as a logo at the top of the PDF
+        doc.setFontSize(25); // Set a large font size for the logo text
+        doc.setFont('helvetica', 'bold'); // Set the font style to bold
+        doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
+    
+        // Add the subtitle below the main text (Address)
+        doc.setFontSize(10); // Set smaller font size for the subtitle
+        doc.setFont('helvetica', 'normal'); // Set font style back to normal
+        doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'left' }); // Centered at (x: 105, y: 40)
+    
+        // Add space after the logo and address
+        doc.setFontSize(16); // Reset font size for the report title
+        doc.text('Tasks Report', 14, 60); // Title at (x:14, y:60)
+    
+        // Use autoTable to generate a table for the tasks
         doc.autoTable({
+            startY: 70, // Start the table after the title
             head: [['Title', 'Description', 'Assigned Employee', 'Status', 'Priority', 'Due Date']],
             body: tasks.map((task) => [
-                task.title, // Access title
-                task.description, // Access description
-                task.assignedEmployeeId?.name || 'N/A', // Access assigned employee name or display 'N/A'
-                task.status, // Access task status
-                task.priority, // Access task priority
-                new Date(task.dueDate).toLocaleDateString(), // Format due date
+                task.title,
+                task.description,
+                task.assignedEmployeeId?.name || 'N/A',
+                task.status,
+                task.priority,
+                new Date(task.dueDate).toLocaleDateString(),
             ]),
         });
+    
+        // Save the PDF
         doc.save('tasks_report.pdf');
     };
+    
+    
+
 
     // Filter tasks based on search term
     const filteredTasks = tasks.filter((task) =>

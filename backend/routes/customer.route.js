@@ -7,19 +7,21 @@ const Customer = require('../models/customer.model'); // Import the Customer mod
 router.post('/register', async (req, res) => {
     const { name, address, email, contactNumber, password } = req.body;
 
+    console.log(req.body);
+
     // Validation logic
-    if (!/^[a-zA-Z\s]+$/.test(name)) {
-        return res.status(400).json({ error: 'Name cannot contain special characters or numbers' });
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        return res.status(400).json({ error: 'Invalid email format' });
-    }
-    if (!/^0[0-9]{9}$/.test(contactNumber)) {
-        return res.status(400).json({ error: 'Contact number must start with 0 and contain 10 digits' });
-    }
-    if (password.length < 6) {
-        return res.status(400).json({ error: 'Password must be at least 6 characters long' });
-    }
+    // if (!/^[a-zA-Z\s]+$/.test(name)) {
+    //     return res.status(400).json({ error: 'Name cannot contain special characters or numbers' });
+    // }
+    // if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    //     return res.status(400).json({ error: 'Invalid email format' });
+    // }
+    // if (!/^0[0-9]{9}$/.test(contactNumber)) {
+    //     return res.status(400).json({ error: 'Contact number must start with 0 and contain 10 digits' });
+    // }
+    // if (password.length < 6) {
+    //     return res.status(400).json({ error: 'Password must be at least 6 characters long' });
+    // }
 
     try {
         // Generate customerId (example logic for auto-increment)

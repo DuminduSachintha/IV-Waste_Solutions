@@ -8,6 +8,7 @@ const UpdateSalary = () => {
     const [salary, setSalary] = useState(null);
     const [basicSalary, setBasicSalary] = useState('');
     const [error, setError] = useState('');
+    const [salaryError, setSalaryError] = useState(''); // State for salary error
     const navigate = useNavigate(); // Initialize useNavigate
 
     useEffect(() => {
@@ -24,8 +25,37 @@ const UpdateSalary = () => {
         fetchSalary();
     }, [id]);
 
+    // Handle salary input with validation
+    const handleSalaryChange = (e) => {
+        const value = e.target.value;
+
+        // Check if value contains only numbers
+        const isNumeric = /^[0-9]*$/.test(value);
+
+        if (!isNumeric) {
+            setSalaryError('Only numbers are allowed, no letters or special characters');
+            return;
+        }
+
+        // Check if the value is within the valid range
+        if (value === '' || (value >= 0 && value <= 200000)) {
+            setBasicSalary(value);
+            setSalaryError(''); // Clear error if valid
+        } else {
+            setSalaryError('Salary must be between 0 and 200,000'); // Show range error
+        }
+    };
+
     const handleUpdate = async (e) => {
         e.preventDefault();
+        setError(''); // Clear any previous error message
+
+        // Prevent submission if there are any validation errors
+        if (salaryError) {
+            setError('Please fix the errors before submitting.');
+            return;
+        }
+
         try {
             await axios.put(`http://localhost:8020/salary/${id}`, { basicSalary }); // Adjust the URL as needed
             navigate('/showsalary'); // Redirect to the Show Salary page after updating
@@ -55,19 +85,22 @@ const UpdateSalary = () => {
                                 Basic Salary:
                             </label>
                             <input
-                                type="number"
+                                type="text" // Use type="text" to validate input
                                 id="basicSalary"
                                 value={basicSalary}
-                                onChange={(e) => setBasicSalary(e.target.value)}
+                                onChange={handleSalaryChange}
+                                className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline ${
+                                    salaryError ? 'border-red-500 focus:border-red-500' : ''
+                                }`}
                                 required
-                                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                min="0" // Ensure the basic salary cannot be negative
                             />
+                            {salaryError && <p className="text-red-500 text-sm mt-1">{salaryError}</p>}
                         </div>
 
                         <button
                             type="submit"
                             className="w-full bg-[#1d8b1d] hover:bg-[#1d8b1d] text-white font-bold py-2 px-4 rounded"
+                            disabled={!!salaryError} // Disable submit if there's an error
                         >
                             Update Salary
                         </button>

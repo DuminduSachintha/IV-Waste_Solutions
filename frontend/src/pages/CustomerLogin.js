@@ -65,7 +65,7 @@ const CustomerLogin = () => {
   return (
     <div className="flex items-center justify-center h-screen bg-[#F6F1E5]">
       <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-xl border border-gray-100">
-        <h2 className="text-3xl font-semibold text-center mb-6 text-gray-900">Customer Login</h2>
+        <h2 className="text-3xl font-semibold text-center mb-6 text-gray-900">Login</h2>
 
         {successMessage && (
           <div className="bg-green-100 text-green-700 p-3 mb-4 rounded-md shadow-sm">

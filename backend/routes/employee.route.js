@@ -32,9 +32,7 @@ router.post('/add', async (req, res) => {
     if (age < 18 || age > 65) {
         return res.status(400).json({ error: 'Age must be between 18 and 65' });
     }
-    if (!/^[0-9]{9}$/.test(emergencyContactNumber)) {
-        return res.status(400).json({ error: 'Emergency contact number must be a valid 10-digit number' });
-    }
+
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emergencyEmail)) {
         return res.status(400).json({ error: 'Invalid emergency email format' });
     }

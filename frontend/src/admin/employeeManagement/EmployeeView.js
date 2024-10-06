@@ -59,6 +59,21 @@ const EmployeeView = () => {
 
   const generatePDF = () => {
     const doc = new jsPDF();
+
+    // Add "IV-Waste Solutions" styled as a logo at the top of the PDF
+    doc.setFontSize(25); // Set a large font size for the logo text
+    doc.setFont('helvetica', 'bold'); // Set the font style to bold
+    doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
+
+    // Add the subtitle below the main text (Address)
+    doc.setFontSize(10); // Set smaller font size for the subtitle
+    doc.setFont('helvetica', 'normal'); // Set font style back to normal
+    doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'left' }); // Centered at (x: 105, y: 35)
+
+    // Add space after the logo and address
+    doc.setFontSize(16); // Reset font size for the report title
+    doc.text('Employee Report', 14, 60); // Title at (x:14, y:60)
+
     const tableColumn = ["Employee ID", "Name", "NIC", "Email", "Contact Number"];
     const tableRows = [];
 
@@ -73,8 +88,7 @@ const EmployeeView = () => {
       tableRows.push(employeeData);
     });
 
-    doc.text("Employee Report", 14, 15);
-    doc.autoTable(tableColumn, tableRows, { startY: 20 });
+    doc.autoTable(tableColumn, tableRows, { startY: 65 }); // Start the table below the title
     doc.save("employee_report.pdf");
   };
 
@@ -128,13 +142,13 @@ const EmployeeView = () => {
                 <td className="border border-[#9e972f] p-4 flex gap-2">
                   <button
                     onClick={() => updateEmployee(employee._id)}
-                    className="bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700 transition-colors shadow-sm"
+                    className="bg-[#1d8b1d] text-white py-1 px-3 rounded hover:bg-[#145214] transition duration-200"
                   >
-                    Update
+                    Edit
                   </button>
                   <button
                     onClick={() => deleteEmployee(employee._id)}
-                    className="bg-red-600 text-white p-2 rounded-lg hover:bg-red-700 transition-colors shadow-sm"
+                    className="bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700 transition duration-200"
                   >
                     Delete
                   </button>

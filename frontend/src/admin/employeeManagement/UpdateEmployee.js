@@ -21,6 +21,56 @@ const UpdateEmployee = () => {
     emergencyEmail: "",
   });
 
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    let validationErrors = {};
+
+    // Name Validation: First letter should be uppercase
+    if (!/^[A-Z][a-zA-Z\s]*$/.test(employeeData.name)) {
+      validationErrors.name =
+        'Name must start with a capital letter and contain only letters and spaces';
+    }
+
+    if (!/^[A-Z][a-zA-Z\s]*$/.test(employeeData.emergencyContactName)) {
+      validationErrors.emergencyContactName =
+        'Name must start with a capital letter and contain only letters and spaces';
+    }
+
+    // Email Validation: Contains '@' and valid format
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(employeeData.email)) {
+      validationErrors.email = 'Email is not valid';
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(employeeData.emergencyEmail)) {
+      validationErrors.emergencyEmail = 'Email is not valid';
+    }
+
+    // Contact Number Validation: Starts with 0, contains only numbers, and is exactly 10 digits
+    if (!/^0[0-9]{9}$/.test(employeeData.contactNumber)) {
+      validationErrors.contactNumber =
+        'Contact number must start with 0 and contain exactly 10 digits';
+    }
+
+    if (!/^0[0-9]{9}$/.test(employeeData.emergencyContactNumber)) {
+      validationErrors.emergencyContactNumber =
+        'Contact number must start with 0 and contain exactly 10 digits';
+    }
+
+    if (employeeData.age < 18 || employeeData.age > 50) {
+      validationErrors.age = "Age must be between 18 and 50";
+    }
+    
+    // Address Validation: Only letters, numbers, /, and , allowed
+    if (!/^[a-zA-Z0-9\s,\/]+$/.test(employeeData.address)) {
+      validationErrors.address =
+        'Address can only contain letters, numbers, spaces, "/" and ","';
+    }
+
+    setErrors(validationErrors);
+    return Object.keys(validationErrors).length === 0;
+  };
+
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
@@ -34,12 +84,165 @@ const UpdateEmployee = () => {
     fetchEmployee();
   }, [id]);
 
+  // const handleInputChange = (e) => {
+  //   setEmployeeData({ ...employeeData, [e.target.name]: e.target.value });
+  // };
+
   const handleInputChange = (e) => {
-    setEmployeeData({ ...employeeData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+
+    if (name === 'name') {
+      // Ensure first letter is capitalized and allow letters and spaces only
+      const validName = value.replace(/[^a-zA-Z\s]/g, '');
+      if (/^[A-Z][a-zA-Z\s]*$/.test(validName) || validName === '') {
+        setEmployeeData({ ...employeeData, name: validName });
+        const { name, ...restErrors } = errors;
+        setErrors(restErrors); // Clear error if valid
+      } else {
+        setErrors({
+          ...errors,
+          name: 'Name must start with a capital letter and contain only letters and spaces',
+        });
+      }
+    }
+    else if (name === 'emergencyContactName') {
+     // Ensure first letter is capitalized and allow letters and spaces only
+     const validName = value.replace(/[^a-zA-Z\s]/g, '');
+     if (/^[A-Z][a-zA-Z\s]*$/.test(validName) || validName === '') {
+       setEmployeeData({ ...employeeData, emergencyContactName: validName });
+       const { emergencyContactName, ...restErrors } = errors;
+       setErrors(restErrors); // Clear error if valid
+     } else {
+       setErrors({
+         ...errors,
+         emergencyContactName: 'Name must start with a capital letter and contain only letters and spaces',
+       });
+     }
+    }
+     else if (name === 'contactNumber') {
+      // Prevent non-numeric input and restrict to 10 characters
+      const formattedValue = value.replace(/[^0-9]/g, '');
+      if (formattedValue.length === 0 || formattedValue.startsWith('0')) {
+        if (formattedValue.length <= 10) {
+          setEmployeeData({ ...employeeData, contactNumber: formattedValue });
+          if (formattedValue.length !== 10) {
+            setErrors({
+              ...errors,
+              contactNumber: 'Contact number must be exactly 10 digits long',
+            });
+          } else {
+            const { contactNumber, ...restErrors } = errors;
+            setErrors(restErrors);
+          }
+        }
+      } else {
+        setErrors({
+          ...errors,
+          contactNumber: 'Contact number must start with 0',
+        });
+      }
+    }else if (name === 'emergencyContactNumber') {
+      // Prevent non-numeric input and restrict to 10 characters
+      const formattedValue = value.replace(/[^0-9]/g, '');
+      if (formattedValue.length === 0 || formattedValue.startsWith('0')) {
+        if (formattedValue.length <= 10) {
+          setEmployeeData({ ...employeeData, emergencyContactNumber: formattedValue });
+          if (formattedValue.length !== 10) {
+            setErrors({
+              ...errors,
+              emergencyContactNumber: 'Contact number must be exactly 10 digits long',
+            });
+          } else {
+            const { emergencyContactNumber, ...restErrors } = errors;
+            setErrors(restErrors);
+          }
+        }
+      } else {
+        setErrors({
+          ...errors,
+          emergencyContactNumber: 'Contact number must start with 0',
+        });
+      }
+    } else if (name === 'email') {
+      // Real-time email validation: Remove invalid characters
+      const validEmail = value.replace(/[^a-zA-Z0-9@._-]/g, '');
+      setEmployeeData({ ...employeeData, email: validEmail });
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(validEmail)) {
+        setErrors({ ...errors, email: 'Email is not valid' });
+      } else {
+        const { email, ...restErrors } = errors;
+        setErrors(restErrors);
+      }
+    }else if (name === 'emergencyEmail') {
+      // Real-time email validation: Remove invalid characters
+      const validEmail = value.replace(/[^a-zA-Z0-9@._-]/g, '');
+      setEmployeeData({ ...employeeData, emergencyEmail: validEmail });
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(validEmail)) {
+        setErrors({ ...errors, email: 'Email is not valid' });
+      } else {
+        const { email, ...restErrors } = errors;
+        setErrors(restErrors);
+      }
+    } else if (name === 'address') {
+      // Real-time address validation: Only allow letters, numbers, spaces, /, and ,
+      const validAddress = value.replace(/[^a-zA-Z0-9\s,\/]/g, '');
+      setEmployeeData({ ...employeeData, address: validAddress });
+      if (!/^[a-zA-Z0-9\s,\/]+$/.test(validAddress)) {
+        setErrors({
+          ...errors,
+          address: 'Address can only contain letters, numbers, spaces, "/" and ","',
+        });
+      } else {
+        const { address, ...restErrors } = errors;
+        setErrors(restErrors);
+      }
+    }else if (name === "age") {
+      const ageValue = value.replace(/[^0-9]/g, ""); // Remove non-numeric input
+      setEmployeeData({ ...employeeData, age: ageValue });
+    
+      // You can do the validation here if you want to show an error message in real-time:
+      // Validate only if the input is non-empty
+      if (ageValue === "" || (Number(ageValue) >= 18 && Number(ageValue) <= 50)) {
+        const { age, ...restErrors } = errors; // Clear error if valid
+        setErrors(restErrors);
+      } else {
+        setErrors({ ...errors, age: "Age must be between 18 and 50" });
+      }
+    }else if (name === "nic") {
+      // Ensure only numeric input, strip out non-numeric characters
+      const nicValue = value.replace(/[^0-9]/g, ""); 
+    
+      // Prevent more than 12 digits
+      if (nicValue.length <= 12) {
+        setEmployeeData({ ...employeeData, nic: nicValue });
+    
+        // Real-time validation: if the NIC is exactly 12 digits, remove the error
+        if (nicValue.length === 12) {
+          const { nic, ...restErrors } = errors;
+          setErrors(restErrors); // Clear error if valid
+        } else {
+          setErrors({
+            ...errors,
+            nic: "NIC must be exactly 12 digits",
+          });
+        }
+      }
+    }        
+    else {
+      setEmployeeData((prevUser) => ({
+        ...prevUser,
+        [name]: value,
+      }));
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validate()) {
+      return; // If validation fails, prevent form submission
+    }
+
     try {
       await axios.put(`http://localhost:8020/employee/${id}`, employeeData);
       alert("Employee updated successfully");
@@ -64,18 +267,21 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.name && <p className="text-red-600">{errors.name}</p>}
         </div>
 
         {/* NIC */}
         <div className="mb-4">
           <label>NIC</label>
           <input
-            type="text"
-            name="nic"
-            value={employeeData.nic}
-            onChange={handleInputChange}
-            className="border p-2 w-full"
-          />
+    type="text"
+    name="nic"
+    value={employeeData.nic}
+    onChange={handleInputChange}
+    className="border p-2 w-full"
+  />
+  {errors.nic && <p className="text-red-600">{errors.nic}</p>}
+
         </div>
 
         {/* Email */}
@@ -88,6 +294,8 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.email && <p className="text-red-600">{errors.email}</p>}
+
         </div>
 
         {/* Contact Number */}
@@ -100,6 +308,8 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.contactNumber && <p className="text-red-600">{errors.contactNumber}</p>}
+
         </div>
 
         {/* Address */}
@@ -112,6 +322,7 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.address && <p className="text-red-600">{errors.address}</p>}
         </div>
 
         {/* Age */}
@@ -124,6 +335,7 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.age && <p className="text-red-600">{errors.age}</p>}
         </div>
 
         {/* Gender */}
@@ -171,6 +383,7 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.emergencyContactName && <p className="text-red-600">{errors.emergencyContactName}</p>}
         </div>
 
         {/* Emergency Contact Number */}
@@ -183,6 +396,7 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.emergencyContactNumber && <p className="text-red-600">{errors.emergencyContactNumber}</p>}
         </div>
 
         {/* Emergency Email */}
@@ -195,6 +409,7 @@ const UpdateEmployee = () => {
             onChange={handleInputChange}
             className="border p-2 w-full"
           />
+          {errors.emergencyEmail && <p className="text-red-600">{errors.emergencyEmail}</p>}
         </div>
 
         {/* Submit Button */}

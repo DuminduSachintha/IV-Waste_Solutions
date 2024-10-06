@@ -7,7 +7,7 @@ import recycle_material from './Assets/recycle-material-illustration.png';
 const HomePage = () => {
   return (
     <div className="bg-[#FFFFF] min-h-screen flex flex-col">
-      {/* Hero Section */}
+      {/* Hero Section */}<br></br><br></br>
       <div className="flex-grow flex flex-col md:flex-row items-center justify-between px-4 md:px-16 py-16">
         <div className="text-center md:text-left mt-8 md:mt-0 md:w-1/2">
           <h1 className="text-5xl md:text-7xl font-bold text-[#41A64F]">
@@ -16,7 +16,7 @@ const HomePage = () => {
           <p className="text-gray-600 text-lg md:text-xl mt-4">
             Leading the Way in Sustainable Waste Solutions for 20 Years
           </p>
-          <button className="mt-8 bg-[#41A64F] text-white font-bold py-3 px-8 rounded hover:bg-yellow-500 transition">
+          <button className="mt-8 bg-[#41A64F] text-white font-bold py-3 px-8 rounded hover:bg-green-800 transition">
             Explore Our Services
           </button>
         </div>
@@ -43,7 +43,7 @@ const HomePage = () => {
 
         <div className="flex justify-center space-x-10">
           {/* Service 1 */}
-          <div className="bg-[#F6F1E5] p-10 rounded-lg shadow-md max-w-xs text-center">
+          <div className="bg-[#ecffe6] p-10 rounded-lg shadow-md max-w-xs text-center">
             <img
               src={hazardous_waste}
               alt="Mass and Hazardous Waste"
@@ -56,7 +56,7 @@ const HomePage = () => {
           </div>
 
           {/* Service 2 */}
-          <div className="bg-[#F6F1E5] p-10 rounded-lg shadow-md max-w-xs text-center">
+          <div className="bg-[#ecffe6] p-10 rounded-lg shadow-md max-w-xs text-center">
             <img
               src={residence_waste}
               alt="Residential Waste"
@@ -69,7 +69,7 @@ const HomePage = () => {
           </div>
 
           {/* Service 3 */}
-          <div className="bg-[#F6F1E5] p-10 rounded-lg shadow-md max-w-xs text-center">
+          <div className="bg-[#ecffe6] p-10 rounded-lg shadow-md max-w-xs text-center">
             <img
               src={recycle_material}
               alt="Buy Recycled Material"
@@ -88,11 +88,11 @@ const HomePage = () => {
         <div className="flex flex-col items-center justify-center">
           <h2 className="text-4xl md:text-5xl font-bold text-[#41A64F]">About Us</h2>
           <p className="text-gray-600 text-lg md:text-xl mt-6 text-center mx-4">
-            IV Waste Management has been a leader in providing sustainable waste solutions for over 20 years.
-            Our mission is to ensure that waste is managed in the most eco-friendly way possible, reducing the
+            IV Waste Management has been a leader in providing sustainable waste solutions for over 20 years.<br></br>
+            Our mission is to ensure that waste is managed in the most eco-friendly way possible,<br></br> reducing the
             environmental impact and promoting sustainability in communities.
           </p>
-          <button className="mt-8 bg-[#F4B400] text-white font-bold py-3 px-8 rounded hover:bg-yellow-500 transition">
+          <button className="mt-8 bg-[#41A64F] text-white font-bold py-3 px-8 rounded hover:bg-green-500 transition">
             Learn More
           </button>
         </div>
@@ -103,9 +103,9 @@ const HomePage = () => {
         <div className="flex flex-col items-center justify-center">
           <h2 className="text-4xl md:text-5xl font-bold text-[#41A64F]">Contact Us</h2>
           <p className="text-gray-600 text-lg md:text-xl mt-6 text-center mx-4">
-            Reach out to us for any inquiries or support. We are here to assist you with all your waste management needs.
+            Reach out to us for any inquiries or support.<br></br> We are here to assist you with all your waste management needs.
           </p>
-          <button className="mt-8 bg-[#F4B400] text-white font-bold py-3 px-8 rounded hover:bg-yellow-500 transition">
+          <button className="mt-8 bg-[#41A64F] text-white font-bold py-3 px-8 rounded hover:bg-green-500 transition">
             Get in Touch
           </button>
         </div>

@@ -45,7 +45,7 @@ const Navbar = () => {
                   Mass and Hazardous Waste Extraction
                 </Link>
                 <Link
-                  to="/residential-waste"
+                  to="/addpickup"
                   className="block px-4 py-2 text-gray-700 hover:bg-yellow-500 hover:text-white"
                   onClick={() => setDropdownOpen(false)}
                 >
@@ -72,7 +72,7 @@ const Navbar = () => {
               </Link>
               <button
                 onClick={handleLogout}
-                className="bg-red-500 text-white px-4 py-2 rounded-full hover:bg-red-600 transition duration-200 text-lg"
+                className="bg-white text-black px-4 py-2 rounded-full hover:bg-green-700 transition duration-200 text-lg"
               >
                 Logout
               </button>

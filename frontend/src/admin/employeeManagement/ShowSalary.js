@@ -39,23 +39,46 @@ const ShowSalary = () => {
         navigate(`/updatesalary/${salaryId}`); // Adjust the route as necessary
     };
 
-    // Function to generate report
-    const generateReport = () => {
-        const doc = new jsPDF();
-        doc.setFontSize(16);
-        doc.text('Salary Report', 14, 22);
 
-        const tableColumn = ["Employee Name", "Basic Salary", "EPF", "ETF"];
-        const tableRows = salaries.map(salary => [
-            salary.employeeId?.name,
+
+  // Function to generate the PDF report
+const generateReport = () => {
+    const doc = new jsPDF();
+
+    // Add "IV-Waste Solutions" styled as a logo at the top of the PDF
+    doc.setFontSize(25); // Set a large font size for the logo text
+    doc.setFont('helvetica', 'bold'); // Set the font style to bold
+    doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
+
+    // Add the subtitle below the main text (Address)
+    doc.setFontSize(10); // Set smaller font size for the subtitle
+    doc.setFont('helvetica', 'normal'); // Set font style back to normal
+    doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'left' }); // Centered at (x: 105, y: 35)
+
+    // Add space after the logo and address
+    doc.setFontSize(16); // Reset font size for the report title
+    doc.text('Salary Report', 14, 60); // Title at (x: 14, y: 60)
+
+    // Use autoTable to generate a table for the salary details
+    doc.autoTable({
+        startY: 70, // Start the table after the title
+        head: [['Employee Name', 'Basic Salary', 'EPF', 'ETF']],
+        body: salaries.map((salary) => [
+            salary.employeeId?.name || 'N/A',
             salary.basicSalary,
             salary.epf,
-            salary.etf
-        ]);
+            salary.etf,
+        ]),
+    });
 
-        doc.autoTable(tableColumn, tableRows, { startY: 30 });
-        doc.save('salary_report.pdf');
-    };
+    // Save the PDF
+    doc.save('salary_report.pdf');
+};
+
+
+
+
+
 
     // Filter salaries based on search term
     const filteredSalaries = salaries.filter(salary =>

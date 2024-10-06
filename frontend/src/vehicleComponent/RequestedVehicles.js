@@ -53,8 +53,21 @@ const RequestedVehicles = () => {
 
     const generateReport = () => {
         const doc = new jsPDF();
-        doc.text('Requested Vehicles Report', 14, 16);
-
+        
+        // Set a large font size for the logo text
+        doc.setFontSize(25);
+        doc.setFont('helvetica', 'bold'); // Set the font style to bold
+        doc.text('IV-Waste Solutions', 105, 30, { align: 'center' }); // Centered at (x: 105, y: 30)
+    
+        // Add subtitle below the main text (Address)
+        doc.setFontSize(10); // Set smaller font size for the subtitle
+        doc.setFont('helvetica', 'normal'); // Set font style back to normal
+        doc.text('Welivita Road, Kaduwela', 105, 35, { align: 'center' }); // Centered at (x: 105, y: 35)
+    
+        // Set the table title
+        doc.setFontSize(16);
+        doc.text('Requested Vehicles Report', 14, 50); // Adjust the Y position for the title
+    
         const tableColumn = ['Vehicle No', 'Model', 'Capacity', 'Registered Year'];
         const tableRows = requestedVehicles
             .filter(vehicle => vehicle.vehicleNo.toLowerCase().includes(searchTerm.toLowerCase()))
@@ -64,10 +77,12 @@ const RequestedVehicles = () => {
                 vehicle.capacity,
                 vehicle.registeredYear,
             ]);
-
-        doc.autoTable(tableColumn, tableRows, { startY: 20 });
+    
+        // Add the table to the document
+        doc.autoTable(tableColumn, tableRows, { startY: 55 }); // Adjust starting Y position for the table
         doc.save('requested_vehicles_report.pdf');
     };
+    
 
     if (loading) {
         return <p className="text-center text-xl">Loading requested vehicles...</p>;
