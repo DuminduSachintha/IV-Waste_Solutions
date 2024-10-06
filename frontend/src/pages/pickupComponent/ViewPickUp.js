@@ -173,22 +173,24 @@ const ViewPickUp = () => {
                 <td className="py-2 px-4 border-b">{pickup.location}</td>
                 <td className="py-2 px-4 border-b">{pickup.address}</td>
                 <td className="py-2 px-4 border-b flex">
-                  <Link to={`/editpickup/${pickup._id}`} className="text-blue-600 hover:underline">
-                    Edit
-                  </Link>
-                  <button
-                    onClick={() => handleDelete(pickup._id)}
-                    className="ml-4 text-red-600 hover:underline"
-                  >
-                    Delete
-                  </button>
-                  <Link
-                    to={`/feedbackpage/${pickup._id}`} 
-                    className="ml-4 text-green-600 hover:underline"
-                  >
-                    Add Feedback
-                  </Link>
-                </td>
+               <Link to={`/editpickup/${pickup._id}`}>
+            <button className="ml-2 bg-green-500 text-white py-1 px-3 rounded hover:bg-green-700 transition duration-300">
+      Edit
+    </button>
+  </Link>
+  <button
+    onClick={() => handleDelete(pickup._id)}
+    className="ml-4 bg-red-600 text-white py-1 px-3 rounded hover:bg-red-700 transition duration-300"
+  >
+    Delete
+  </button>
+  <Link to={`/feedbackpage/${pickup._id}`}>
+    <button className="ml-4 bg-[#2f9e5d] text-white py-1 px-3 rounded hover:bg-green-700 transition duration-300">
+      Add Feedback
+    </button>
+  </Link>
+</td>
+
               </tr>
             ))
           ) : (
@@ -200,10 +202,13 @@ const ViewPickUp = () => {
       </table>
 
       <div className="mt-6 text-center">
-        <Link to="/addpickup" className="text-blue-600 hover:underline">
-          Add New Pick-up Request
-        </Link>
-      </div>
+  <Link to="/addpickup">
+    <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">
+      Add New Pick-up Request
+    </button>
+  </Link>
+</div>
+
       </div>
       </div>
     </div>
