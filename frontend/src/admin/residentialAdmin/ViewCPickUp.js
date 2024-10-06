@@ -100,8 +100,8 @@ const AdminPickUp = () => {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex-1 p-8 bg-[#F6F1E5]">
-        <h2 className="text-5xl font-bold text-center mb-6 text-[#cfa226] shadow-md">
+      <div className="flex-1 p-8 bg-white">
+        <h2 className="text-5xl font-bold text-center mb-6 text-black shadow-md">
           Admin - Pick-up Requests
         </h2>
 
@@ -110,7 +110,7 @@ const AdminPickUp = () => {
           <input 
             type="text" 
             placeholder="Search by category..." 
-            className="p-3 border border-[#9e972f] rounded w-1/3 shadow-md focus:ring-2 focus:ring-[#9e972f] focus:outline-none" 
+            className="p-3 border border-[#2f9e4b] rounded w-1/3 shadow-md focus:ring-2 focus:ring-[#2f9e4b] focus:outline-none" 
             value={searchTerm} 
             onChange={(e) => setSearchTerm(e.target.value)} 
           />
@@ -118,7 +118,7 @@ const AdminPickUp = () => {
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
-            className="p-3 border border-[#9e972f] rounded shadow-md"
+            className="p-3 border border-[#2f9e4b] rounded shadow-md"
           >
             <option value="All">All Categories</option>
             <option value="organic">Organic</option>
@@ -131,7 +131,7 @@ const AdminPickUp = () => {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="p-3 border border-[#9e972f] rounded shadow-md"
+            className="p-3 border border-[#2f9e4b] rounded shadow-md"
           >
             <option value="All">All Status</option>
             <option value="Accepted">Accepted</option>
@@ -141,7 +141,7 @@ const AdminPickUp = () => {
 
           <button 
             onClick={generatePDF} 
-            className="bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
+            className="bg-gradient-to-r from-[#4cae6e] to-[#318847] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
           >
             Generate PDF
           </button>
@@ -149,26 +149,26 @@ const AdminPickUp = () => {
 
         {error && <div className="mb-4 text-red-500">{error}</div>}
 
-        <table className="min-w-full bg-white border border-[#9e972f] rounded-lg shadow-lg overflow-hidden">
-          <thead className="bg-[#E2E8CE]">
+        <table className="min-w-full bg-white border border-[#2f9e4b] rounded-lg shadow-lg overflow-hidden">
+          <thead className="bg-[#2f9e4b]  text-white">
             <tr>
-              <th className="border border-[#9e972f] p-4 font-semibold">Category</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Quantity</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Date</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Location</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Status</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Actions</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Category</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Quantity</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Date</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Location</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Status</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredPickups.map((pickup) => (
               <tr key={pickup._id} className="odd:bg-[#f9f9f7] even:bg-[#f1f0ea] transition duration-200 hover:bg-[#E2E8CE]">
-                <td className="border border-[#9e972f] p-4">{pickup.category}</td>
-                <td className="border border-[#9e972f] p-4">{pickup.quantity}</td>
-                <td className="border border-[#9e972f] p-4">{new Date(pickup.date).toLocaleDateString()}</td>
-                <td className="border border-[#9e972f] p-4">{pickup.location}</td>
-                <td className="border border-[#9e972f] p-4">{pickup.status}</td>
-                <td className="border border-[#9e972f] p-4 flex gap-2">
+                <td className="border border-[#2f9e4b] p-4">{pickup.category}</td>
+                <td className="border border-[#2f9e4b] p-4">{pickup.quantity}</td>
+                <td className="border border-[#2f9e4b] p-4">{new Date(pickup.date).toLocaleDateString()}</td>
+                <td className="border border-[#2f9e4b] p-4">{pickup.location}</td>
+                <td className="border border-[#2f9e4b] p-4">{pickup.status}</td>
+                <td className="border border-[#2f9e4b] p-4 flex gap-2">
                   <button
                     onClick={() => handleAccept(pickup._id)}
                     className={`bg-blue-600 text-white p-2 rounded-lg shadow-sm ${pickup.status === 'Accepted' ? 'bg-gray-400 cursor-not-allowed' : 'hover:bg-blue-700'}`}

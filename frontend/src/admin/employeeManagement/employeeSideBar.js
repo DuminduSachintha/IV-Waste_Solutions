@@ -15,13 +15,13 @@ const Sidebar = () => {
     
       const isLoggedIn = Cookies.get('userId');
   return (
-    <div className="bg-[#A5D6A7] w-64 min-h-screen p-6 shadow-lg">
+    <div className="bg-[#b3e6bf] w-64 min-h-screen p-6 shadow-lg">
       
       <ul className="space-y-4">
       <li>
           <Link 
             to="/mainadmindashboard" 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
            Main Dashboard
           </Link>
@@ -29,7 +29,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/employeeview" 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
             Employee View
           </Link>
@@ -37,7 +37,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/employeeadd" 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
             Add Employee
           </Link>
@@ -45,7 +45,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/addtask" 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
             Add Task
           </Link>
@@ -53,7 +53,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/viewtask" 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
             View Task
           </Link>
@@ -61,7 +61,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/addsalary" 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
             Add Salary
           </Link>
@@ -69,7 +69,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/showsalary" 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
             Show Salaries
           </Link>
@@ -77,7 +77,7 @@ const Sidebar = () => {
         <li>
           <button 
             onClick={handleLogout} 
-            className="block p-3 rounded-lg transition-colors bg-[#A5D6A7] text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-white text-[#135713] hover:bg-[#1d8b1d] hover:text-white"
           >
             Logout
           </button>

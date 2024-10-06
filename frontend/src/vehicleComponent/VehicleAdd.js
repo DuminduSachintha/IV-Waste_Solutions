@@ -52,8 +52,8 @@ const VehicleAdd = () => {
             <Sidebar />
 
             {/* Main Content */}
-            <div className="flex-1 p-8 bg-[#F6F1E5] min-h-screen">
-                <h2 className="text-3xl font-bold mb-4 text-center text-[#9e972f]">Add New Vehicle</h2>
+            <div className="flex-1 p-8 bg-white min-h-screen">
+                <h2 className="text-3xl font-bold mb-4 text-center text-black">Add New Vehicle</h2>
                 <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6">
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="vehicleNo">

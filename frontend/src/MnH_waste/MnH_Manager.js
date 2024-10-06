@@ -172,25 +172,25 @@ const MnHManager = () => {
     };
 
     return (
-        <div className="p-6 bg-[#f9ffc2] min-h-screen">
-            <div className="text-center shadow-lg p-5 bg-[#F6F1E5] rounded-lg mb-5">
-                <h1 className="text-[#cfa226]">Welcome, MnH Manager!</h1>
-                <p className="lead text-[#9e972f]">You have access to the management features.</p>
+        <div className="p-6 bg-white min-h-screen">
+            <div className="text-center shadow-lg p-5 bg-[#b6d2c0] rounded-lg mb-5">
+                <h1 className="text-black">Welcome, MnH Manager!</h1>
+                <p className="lead text-black">You have access to the management features.</p>
                 <button 
                     onClick={handleLogout} 
-                    className="bg-[#cfa226] text-white p-3 rounded-lg transition-colors hover:bg-[#9e972f]"
+                    className="bg-[#4cae6e] text-white p-3 rounded-lg transition-colors hover:bg-[#2f9e4b]"
                 >
                     Logout
                 </button>
             </div>
 
             <div className="mt-5">
-                <h2 className="text-[#cfa226]">Admin Dashboard</h2>
+                <h2 className="text-[#4cae6e]">Admin Dashboard</h2>
                 <div className="mb-3">
-                    <label className="block text-[#9e972f]">Search by Status:</label>
+                    <label className="block text-[#2f9e4b]]">Search by Status:</label>
                     <input 
                         type="text" 
-                        className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#cfa226]" 
+                        className="w-full p-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#4cae6e]" 
                         placeholder="Enter pending, accepted, or declined" 
                         value={searchTerm} 
                         onChange={(e) => setSearchTerm(e.target.value)} 
@@ -224,7 +224,7 @@ const MnHManager = () => {
                                 <td className="border px-4 py-2">{entry.status}</td>
                                 <td className="border px-4 py-2">
                                     <button 
-                                        className="bg-yellow-500 text-white p-2 rounded-lg mx-1" 
+                                        className="bg-green-500 text-white p-2 rounded-lg mx-1" 
                                         onClick={() => setEditEntry(entry)}
                                     >
                                         Edit
@@ -244,7 +244,7 @@ const MnHManager = () => {
 
             {/* New table for Accept/Decline Actions */}
             <div className="mt-5">
-                <h2 className="text-[#cfa226]">Pending Actions</h2>
+                <h2 className="text-[#4cae6e]">Pending Actions</h2>
                 <table className="min-w-full bg-white mb-5">
                     <thead>
                         <tr>
@@ -284,7 +284,7 @@ const MnHManager = () => {
 
             {/* New table for estimated costs */}
             <div className="mt-5">
-                <h2 className="text-[#cfa226]">Estimated Costs</h2>
+                <h2 className="text-[#4cae6e]">Estimated Costs</h2>
                 <table className="min-w-full bg-white mb-5">
                     <thead>
                         <tr>
@@ -312,7 +312,7 @@ const MnHManager = () => {
             <div className="mt-5 text-center">
                 <button 
                     onClick={downloadEstimatedCostReport} 
-                    className="bg-[#cfa226] text-white p-3 rounded-lg transition-colors hover:bg-[#9e972f]"
+                    className="bg-[#4cae6e] text-white p-3 rounded-lg transition-colors hover:bg-[#2f9e4b]"
                 >
                     Download Estimated Cost Report
                 </button>

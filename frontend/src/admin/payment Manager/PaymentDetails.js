@@ -130,8 +130,8 @@ const PaymentDetails = () => {
             <Sidebar />
 
             {/* Main Content */}
-            <div className="flex-1 p-8 bg-[#F6F1E5] min-h-screen">
-                <h2 className="text-4xl font-extrabold text-center text-[#cfa226] mb-6">Payment Details</h2>
+            <div className="flex-1 p-8 bg-white min-h-screen">
+                <h2 className="text-4xl font-extrabold text-center text-black mb-6">Payment Details</h2>
                 {message && <p className="text-center text-red-500 mb-4">{message}</p>}
 
                 {/* Search Bar */}
@@ -141,12 +141,12 @@ const PaymentDetails = () => {
                         value={searchTerm}
                         onChange={handleSearch}
                         placeholder="Search by item name..."
-                        className="border-2 border-[#9e972f] p-3 rounded w-2/4 mr-4 shadow-md focus:outline-none focus:ring-2 focus:ring-[#9e972f] transition duration-200"
+                        className="border-2 border-[#2f9e5f] p-3 rounded w-2/4 mr-4 shadow-md focus:outline-none focus:ring-2 focus:ring-[#2f9e54] transition duration-200"
                     />
 
                     <button
                         onClick={generatePDF}
-                        className="bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white py-3 rounded-lg hover:shadow-lg transition duration-300 p-6"
+                        className="bg-gradient-to-r from-[#4cae6e] to-[#318847] text-white py-3 rounded-lg hover:shadow-lg transition duration-300 p-6"
                     >
                         Generate Report
                     </button>
@@ -157,26 +157,26 @@ const PaymentDetails = () => {
                     <table className="min-w-full bg-white border border-[#9e972f] rounded-lg shadow-lg overflow-hidden">
                         <thead>
                             <tr className="bg-[#E2E8CE] text-left">
-                                <th className="border border-[#9e972f] p-4 font-semibold">Item ID</th>
-                                <th className="border border-[#9e972f] p-4 font-semibold">Item Name</th>
-                                <th className="border border-[#9e972f] p-4 font-semibold">Price</th>
-                                <th className="border border-[#9e972f] p-4 font-semibold">Customer Id</th>
-                                <th className="border border-[#9e972f] p-4 font-semibold">Status</th>
-                                <th className="border border-[#9e972f] p-4 font-semibold">Actions</th>
+                                <th className="border border-[#2f9e4b] p-4 font-semibold">Item ID</th>
+                                <th className="border border-[#2f9e4b] p-4 font-semibold">Item Name</th>
+                                <th className="border border-[#2f9e4b] p-4 font-semibold">Price</th>
+                                <th className="border border-[#2f9e4b] p-4 font-semibold">Customer Id</th>
+                                <th className="border border-[#2f9e4b] p-4 font-semibold">Status</th>
+                                <th className="border border-[#2f9e4b] p-4 font-semibold">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             {filteredPayments.map((payment) => (
                                 <tr key={payment._id} className="odd:bg-[#f9f9f7] even:bg-[#f1f0ea] transition duration-200 hover:bg-[#E2E8CE]">
-                                    <td className="border border-[#9e972f] p-4">{payment.itemId}</td>
-                                    <td className="border border-[#9e972f] p-4">{payment.itemName}</td>
-                                    <td className="border border-[#9e972f] p-4">{payment.itemPrice.toFixed(2)}</td>
-                                    <td className="border border-[#9e972f] p-4">{payment.customerId}</td>
-                                    <td className="border border-[#9e972f] p-4">{payment.status}</td>
-                                    <td className="border border-[#9e972f] p-4">
+                                    <td className="border border-[#2f9e4b] p-4">{payment.itemId}</td>
+                                    <td className="border border-[#2f9e4b] p-4">{payment.itemName}</td>
+                                    <td className="border border-[#2f9e4b] p-4">{payment.itemPrice.toFixed(2)}</td>
+                                    <td className="border border-[#2f9e4b] p-4">{payment.customerId}</td>
+                                    <td className="border border-[#2f9e4b] p-4">{payment.status}</td>
+                                    <td className="border border-[#2f9e4b] p-4">
                                         <button
                                             onClick={() => updatePaymentStatus(payment._id, payment.status === 'paid' ? 'unpaid' : 'paid')}
-                                            className="bg-[#9e972f] text-white py-1 px-3 rounded mr-2"
+                                            className="bg-[#2f9e4b] text-white py-1 px-3 rounded mr-2"
                                         >
                                             {payment.status === 'paid' ? 'Mark Unpaid' : 'Mark Paid'}
                                         </button>

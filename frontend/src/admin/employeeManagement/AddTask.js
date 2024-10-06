@@ -104,7 +104,7 @@ const AddTask = () => {
 
             {/* Main Content */}
             <div className="flex-1 p-8 bg-[#ffffff] min-h-screen">
-                <h2 className="text-5xl font-extrabold mb-8 text-center text-[#1d8b1d] ">Add Task</h2>
+                <h2 className="text-5xl font-extrabold mb-8 text-center text-black ">Add Task</h2>
 
                 {error && <p className="text-red-500 text-center mb-4">{error}</p>}
 

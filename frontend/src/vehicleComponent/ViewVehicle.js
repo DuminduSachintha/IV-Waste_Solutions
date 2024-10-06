@@ -39,7 +39,7 @@ const ViewVehicle = () => {
             {/* Main Content */}
             <div className="flex-1 p-6 bg-[#F6F1E5] min-h-screen">
                 <div className="max-w-lg mx-auto p-6 bg-white border border-gray-300 rounded-lg shadow-lg transition-transform transform hover:scale-105">
-                    <h2 className="text-3xl font-bold mb-4 text-center text-[#9e972f]">Vehicle Details</h2>
+                    <h2 className="text-3xl font-bold mb-4 text-center text-black">Vehicle Details</h2>
                     <div className="space-y-2">
                         <p className="text-lg">
                             <strong className="font-medium">Vehicle No:</strong> {vehicle.vehicleNo}
@@ -69,7 +69,7 @@ const ViewVehicle = () => {
                     )}
                     <div className="mt-4">
                         <button 
-                            className="w-full py-2 px-4 bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white rounded-lg hover:shadow-lg transition duration-300 p-6"
+                            className="w-full py-2 px-4 bg-gradient-to-r from-[#2f9e4b] to-[#2f9e4b] text-white rounded-lg hover:shadow-lg transition duration-300 p-6"
                             onClick={() => window.history.back()}
                         >
                             Back to Vehicles

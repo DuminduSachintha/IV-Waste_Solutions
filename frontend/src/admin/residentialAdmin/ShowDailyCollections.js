@@ -105,8 +105,8 @@ const ShowDailyCollections = () => {
     return (
         <div className="flex min-h-screen">
             <Sidebar />
-            <div className="flex-1 p-8 bg-[#F6F1E5]">
-                <h2 className="text-5xl font-bold text-center mb-6 text-[#cfa226] shadow-md">
+            <div className="flex-1 p-8 bg-white">
+                <h2 className="text-5xl font-bold text-center mb-6 text-black shadow-md">
                     All Daily Collections
                 </h2>
 
@@ -118,11 +118,11 @@ const ShowDailyCollections = () => {
                         placeholder="Search by category or name..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="p-3 border border-[#9e972f] rounded w-1/3 shadow-md focus:ring-2 focus:ring-[#9e972f] focus:outline-none"
+                        className="p-3 border border-[#2f9e4b] rounded w-1/3 shadow-md focus:ring-2 focus:ring-[#2f9e4b] focus:outline-none"
                     />
                     <button
                         onClick={generateReport}
-                        className="bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
+                        className="bg-gradient-to-r from-[#4cae6e] to-[#318847] text-white py-3 px-6 rounded-lg hover:shadow-lg transition duration-300"
                     >
                         Generate Report
                     </button>
@@ -130,7 +130,7 @@ const ShowDailyCollections = () => {
 
                 <table className="table-auto w-full border-collapse bg-white shadow-lg rounded-lg">
                     <thead>
-                        <tr className="bg-[#9e972f] text-white">
+                        <tr className="bg-[#2f9e4b] text-white">
                             <th className="px-4 py-2">Category</th>
                             <th className="px-4 py-2">Name</th>
                             <th className="px-4 py-2">NIC</th>

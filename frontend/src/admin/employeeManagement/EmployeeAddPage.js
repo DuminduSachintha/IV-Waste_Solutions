@@ -196,7 +196,7 @@ const EmployeeAddPage = () => {
 
             {/* Main Content */}
             <div className="flex-1 p-8 bg-[#ffffff] min-h-screen">
-                <h2 className="text-5xl font-extrabold mb-8 text-center text-[#1d8b1d] ">Add Employee</h2>
+                <h2 className="text-5xl font-extrabold mb-8 text-center text-black ">Add Employee</h2>
                 <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/** Employee Form Fields **/}
                     <div className="mb-4">

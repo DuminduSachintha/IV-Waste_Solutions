@@ -74,7 +74,7 @@ const AddSalary = () => {
 
             {/* Main Content */}
             <div className="flex-1 p-8 bg-[#F6F1E5] min-h-screen">
-                <h2 className="text-5xl font-extrabold mb-8 text-center text-[#1d8b1d] ">Add Salary</h2>
+                <h2 className="text-5xl font-extrabold mb-8 text-center text-black ">Add Salary</h2>
 
                 {error && <p className="text-red-500 text-center mb-4">{error}</p>}
                 {successMessage && <p className="text-green-500 text-center mb-4">{successMessage}</p>}

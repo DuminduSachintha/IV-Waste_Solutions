@@ -102,7 +102,7 @@ const EmployeeView = () => {
 
       {/* Main Content */}
       <div className="flex-1 p-8 bg-[#ffffff] min-h-screen">
-        <h1 className="text-5xl font-extrabold mb-8 text-center text-[#1d8b1d] ">Employee List</h1>
+        <h1 className="text-5xl font-extrabold mb-8 text-center text-black ">Employee List</h1>
 
         <div className="flex justify-between items-center mb-6">
           <input
@@ -114,7 +114,7 @@ const EmployeeView = () => {
           />
           <button
             onClick={generatePDF}
-            className="bg-gradient-to-r from-[#1d8b1d] to-[#1d8b1d] text-white py-3 rounded-lg hover:shadow-lg transition duration-300 p-6"
+            className="bg-gradient-to-r from-[#4cae6e] to-[#318847] text-white py-3 rounded-lg hover:shadow-lg transition duration-300 p-6"
           >
             Generate Report
           </button>
@@ -123,23 +123,23 @@ const EmployeeView = () => {
         <table className="min-w-full bg-white border border-[#1d8b1d] rounded-lg shadow-lg overflow-hidden">
           <thead>
             <tr className="bg-[#E2E8CE] text-left">
-              <th className="border border-[#9e972f] p-4 font-semibold">Employee ID</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Name</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">NIC</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Email</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Contact Number</th>
-              <th className="border border-[#9e972f] p-4 font-semibold">Actions</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Employee ID</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Name</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">NIC</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Email</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Contact Number</th>
+              <th className="border border-[#2f9e4b] p-4 font-semibold">Actions</th>
             </tr>
           </thead>
           <tbody>
             {filteredEmployees.map((employee) => (
               <tr key={employee.employeeId} className="odd:bg-[#f9f9f7] even:bg-[#f1f0ea] transition duration-200 hover:bg-[#E2E8CE]">
-                <td className="border border-[#9e972f] p-4">{employee.employeeId}</td>
-                <td className="border border-[#9e972f] p-4">{employee.name}</td>
-                <td className="border border-[#9e972f] p-4">{employee.nic}</td>
-                <td className="border border-[#9e972f] p-4">{employee.email}</td>
-                <td className="border border-[#9e972f] p-4">{employee.contactNumber}</td>
-                <td className="border border-[#9e972f] p-4 flex gap-2">
+                <td className="border border-[#2f9e4b] p-4">{employee.employeeId}</td>
+                <td className="border border-[#2f9e4b] p-4">{employee.name}</td>
+                <td className="border border-[#2f9e4b] p-4">{employee.nic}</td>
+                <td className="border border-[#2f9e4b] p-4">{employee.email}</td>
+                <td className="border border-[#2f9e4b] p-4">{employee.contactNumber}</td>
+                <td className="border border-[#2f9e4b] p-4 flex gap-2">
                   <button
                     onClick={() => updateEmployee(employee._id)}
                     className="bg-[#1d8b1d] text-white py-1 px-3 rounded hover:bg-[#145214] transition duration-200"

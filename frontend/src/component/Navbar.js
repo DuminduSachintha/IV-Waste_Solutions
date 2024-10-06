@@ -39,21 +39,21 @@ const Navbar = () => {
               <div className="absolute bg-white shadow-md rounded-lg py-2 mt-2 w-48">
                 <Link
                   to="/MnHwaste"
-                  className="block px-4 py-2 text-gray-700 hover:bg-yellow-500 hover:text-white"
+                  className="block px-4 py-2 text-gray-700 hover:bg-green-500 hover:text-white"
                   onClick={() => setDropdownOpen(false)}
                 >
                   Mass and Hazardous Waste Extraction
                 </Link>
                 <Link
                   to="/addpickup"
-                  className="block px-4 py-2 text-gray-700 hover:bg-yellow-500 hover:text-white"
+                  className="block px-4 py-2 text-gray-700 hover:bg-green-500 hover:text-white"
                   onClick={() => setDropdownOpen(false)}
                 >
                   Residential Waste Extraction
                 </Link>
                 <Link
                   to="/buy-recycled-material"
-                  className="block px-4 py-2 text-gray-700 hover:bg-yellow-500 hover:text-white"
+                  className="block px-4 py-2 text-gray-700 hover:bg-green-500 hover:text-white"
                   onClick={() => setDropdownOpen(false)}
                 >
                   Buy Recycled Material
@@ -80,7 +80,7 @@ const Navbar = () => {
           ) : (
             <Link
               to="/customerlogin"
-              className="bg-yellow-700 text-white px-4 py-2 rounded-full hover:bg-yellow-800 transition duration-200 text-lg"
+              className="bg-green-700 text-white px-4 py-2 rounded-full hover:bg-green-800 transition duration-200 text-lg"
             >
               Login
             </Link>
