@@ -95,7 +95,7 @@ const CustomerViewPage = () => {
 
             {/* Main content */}
             <div className="flex-1 p-8 bg-[#F6F1E5] min-h-screen">
-                <h2 className="text-4xl font-bold text-center text-[#cfa226] mb-8 shadow-md">Customer List</h2>
+                <h2 className="text-4xl font-bold text-center text-[#00580f] mb-8 ">Customer List</h2>
 
                 <div className="flex justify-between items-center mb-6">
                     <input
@@ -106,7 +106,7 @@ const CustomerViewPage = () => {
                         className="border-2 border-[#9e972f] p-3 rounded w-2/4 mr-4 shadow-md focus:outline-none focus:ring-2 focus:ring-[#9e972f] transition duration-200"
                     />
                     <button
-                        className="bg-gradient-to-r from-[#FFC107] to-[#FFA000] text-white py-3 rounded-lg hover:shadow-lg transition duration-300 p-6"
+                        className="bg-gradient-to-r from-[#21a437] to-[#21a437] text-white py-3 rounded-lg hover:shadow-lg transition duration-300 p-6"
                         onClick={generateReport}
                     >
                         Generate Report

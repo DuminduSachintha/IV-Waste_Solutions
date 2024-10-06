@@ -15,13 +15,13 @@ const Sidebar = () => {
     
       const isLoggedIn = Cookies.get('userId');
   return (
-    <div className="bg-[#f9ffc2] w-64 min-h-screen p-6 shadow-lg">
+    <div className="bg-[#E2E8CE] w-64 min-h-screen p-6 shadow-lg">
       
       <ul className="space-y-4">
       <li>
           <Link 
             to="/mainadmindashboard" 
-            className="block p-3 rounded-lg transition-colors bg-[#F6F1E5] text-[#cfa226] hover:bg-[#9e972f] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-[#E2E8CE] text-[#000000] hover:bg-[#3da839] hover:text-white"
           >
            Main Dashboard
           </Link>
@@ -29,7 +29,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/customerview" 
-            className="block p-3 rounded-lg transition-colors bg-[#F6F1E5] text-[#cfa226] hover:bg-[#9e972f] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-[#E2E8CE] text-[#000000] hover:bg-[#3da839] hover:text-white"
           >
             Customer View
           </Link>
@@ -37,7 +37,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/viewallfeedback" 
-            className="block p-3 rounded-lg transition-colors bg-[#F6F1E5] text-[#cfa226] hover:bg-[#9e972f] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-[#E2E8CE] text-[#000000] hover:bg-[#3da839] hover:text-white"
           >
             Feedback View
           </Link>
@@ -45,7 +45,7 @@ const Sidebar = () => {
         <li>
           <Link 
             to="/viewcontact" 
-            className="block p-3 rounded-lg transition-colors bg-[#F6F1E5] text-[#cfa226] hover:bg-[#9e972f] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-[#E2E8CE] text-[#000000] hover:bg-[#3da839] hover:text-white"
           >
             Reported Issues
           </Link>
@@ -53,7 +53,7 @@ const Sidebar = () => {
         <li>
           <button 
             onClick={handleLogout} 
-            className="block p-3 rounded-lg transition-colors bg-[#F6F1E5] text-[#cfa226] hover:bg-[#9e972f] hover:text-white"
+            className="block p-3 rounded-lg transition-colors bg-[#E2E8CE] text-[#000000] hover:bg-[#3da839] hover:text-white"
           >
             Logout
           </button>
