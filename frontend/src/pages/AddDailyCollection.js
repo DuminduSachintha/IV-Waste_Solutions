@@ -256,7 +256,7 @@ const AddDailyCollection = () => {
       </div>
 
       <div className="flex justify-center items-center w-full">
-        <div className="max-w-4xl w-4/5 p-6 bg-[#ffffff] rounded-lg shadow-md">
+        <div className="max-w-4xl w-4/5 p-6 bg-[#c5c078] rounded-lg shadow-md">
           <h2 className="text-3xl font-bold text-center mb-6">
             Add Daily Collection
           </h2>
@@ -400,7 +400,7 @@ const AddDailyCollection = () => {
 
             <button
               type="submit"
-              className="col-span-1 md:col-span-2 mt-4 w-full bg-gradient-to-r from-green-500 to-green-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-green-600 hover:to-green-800 transition duration-300"
+              className="col-span-1 md:col-span-2 mt-4 w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-yellow-600 hover:to-yellow-800 transition duration-300"
             >
               Add Daily Collection
             </button>

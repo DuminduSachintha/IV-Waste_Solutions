@@ -115,7 +115,7 @@ const ViewPickUp = () => {
     </div>
       <div className='flex flex-col items-center mt-10 w-4/5'>
       <div className='w-6/7'>
-      <h2 className="text-3xl font-bold mb-6 text-[#166d13] text-center">Pick-Up Requests</h2>
+      <h2 className="text-3xl font-bold mb-6 text-[#9e972f] text-center">Pick-Up Requests</h2>
 
       {/* Search and Filter Section */}
       <div className="mb-6 flex justify-between items-center">
@@ -142,7 +142,7 @@ const ViewPickUp = () => {
 
         <button
           onClick={generatePDF}
-          className="p-2 bg-[#41A64F] text-white font-bold rounded-lg hover:bg-[#f6f1e5] hover:text-[#41A64F] transition duration-300"
+          className="p-2 bg-[#9e972f] text-white font-bold rounded-lg hover:bg-[#f6f1e5] hover:text-[#9e972f] transition duration-300"
         >
           Generate PDF
         </button>
