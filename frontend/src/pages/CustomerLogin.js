@@ -85,7 +85,7 @@ const CustomerLogin = () => {
             <input
               type="email"
               name="email"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               value={credentials.email}
               onChange={handleChange}
               required
@@ -98,7 +98,7 @@ const CustomerLogin = () => {
             <input
               type="password"
               name="password"
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               value={credentials.password}
               onChange={handleChange}
               required

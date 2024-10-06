@@ -85,6 +85,7 @@ const ContactUs = () => {
         <h2 className="text-4xl font-semibold text-center text-gray-900 mb-6">
           Contact Us
         </h2>
+        <br></br>
 
         {error && (
           <div className="bg-red-100 text-red-700 p-3 mb-4 rounded-md border border-red-300">
@@ -125,21 +126,17 @@ const ContactUs = () => {
                         </p>
                     </div>
                  <br></br>
-          <br></br>
-          <p className="lock text-gray-700 flex items-center text-lg">
-            <strong>Do you have any Issues with pur services ?</strong>
-          </p>
-          <br></br>
+
 
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">
-              Issue
+            Do you have any Issues with our services ?
             </label>
             <input
               type="text"
               value={title}
               onChange={handleTitleChange}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
               placeholder="Enter your title"
             />
             {titleError && (
@@ -154,8 +151,8 @@ const ContactUs = () => {
             <textarea
               value={description}
               onChange={handleDescriptionChange} // Validate and filter description on change
-              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 shadow-sm"
-              rows="3"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 shadow-sm"
+              rows="2"
               placeholder="Enter your message"
             />
             {descriptionError && (
@@ -165,7 +162,7 @@ const ContactUs = () => {
 
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-yellow-500 to-yellow-700 text-white py-3 rounded-lg hover:shadow-lg hover:from-yellow-600 hover:to-yellow-800 transition duration-300"
+            className="w-full bg-gradient-to-r from-green-600 to-green-600 text-white py-3 rounded-lg hover:shadow-lg hover:from-green-600 hover:to-green-600 transition duration-300"
           >
             Submit
           </button>
