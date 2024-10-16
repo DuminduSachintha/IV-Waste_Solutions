@@ -164,7 +164,7 @@ const PaymentPage = () => {
                     Expiration Date (MM/YYYY)
                   </label>
                   <input
-                    type="date"
+                    type="text"
                     id="expDate"
                     value={expDate}
                     onChange={(e) => setExpDate(e.target.value)}
